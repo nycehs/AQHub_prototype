@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Neighborhood Selector</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+
+    </style>
+    
+    <!--    <script src="./js/d3-fetch.v1.min.js"></script> 
+    <script src="./js/d3-dsv.v1.min.js"></script>-->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+  </head>
+
+  <body>
+    <h1>MVP</h1>
+
+    <p>Please select a neighborhood (try BK01).</p>
+
+    <div class="form">
+      <label for="ntaField">Enter an NTA code: </label>
+      <input type="text" id="ntaField" class="ntaField">
+      <input type="submit" id="ntaSubmitButton" value="Submit NTA code" class="ntaSubmit">
+    </div>
+
+    <div class="resultParas">
+      <p id="NTA"></p>
+      <p id="PM"></p>
+      <p id="NO2"></p>
+      <p id="BuildingEmissions"></p>
+      <p id="BuildingDensity"></p>
+      <p id="TrafficDensity"></p>
+      <p id="Industrial"></p>
+    </div>
+    <div id=PMmap></div>
+    <div id=NOmap></div>
+    <div id=PMbar></div>
+    <div id=NObar></div>
+
+   <script src='./js/AQhub.js'></script>
+    </body>
+</html>
