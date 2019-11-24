@@ -14,6 +14,9 @@ let dIndustrial = 0;
 const sbmt = document.querySelector("#ntaSubmitButton"); //creates a constant to hold the submit button query selector
 sbmt.addEventListener('click',dataChange); // listens for button clicks to change neighborhood, changes data
 
+//the d3 code below loads the NTA map data
+let nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.json")
+
 //the d3 code below loads the data from a CSV file and dumps it into global javascript object variable.
 d3.csv("./data/NTA_tertilesWpm_no2.csv").then(function(data) {
     //console.log(data); // [{"Hello": "world"}, …]
