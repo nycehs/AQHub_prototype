@@ -52,6 +52,12 @@ function dataChange() {
     
     }
 
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/PMmapSpec.vl.json"
+    vegaEmbed('#PMmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
 function tertileTranslate(tertileVal) {
     if (tertileVal==="1") {return 'High'}
     else if (tertileVal==="2") { return 'Medium'}
