@@ -56,6 +56,7 @@ function dataChange() {
     var spec = "./js/PMmapSpec.vl.json"
     vegaEmbed('#PMmap', spec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
 function tertileTranslate(tertileVal) {
