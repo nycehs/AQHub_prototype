@@ -2,7 +2,7 @@
 // Create and initialize variables
 let nyccasData = [];
 let neighborhoodData =[];
-let selectedNeighborhood = 'BK09';  //document.querySelector("#ntaField")
+let selectedNeighborhood = ['BK09'];  //document.querySelector("#ntaField")
 let selectedName = '';
 let dPM = 0;
 let dNO2 = 0;
