@@ -24,7 +24,7 @@
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@3"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>
   </head>
 
   <body>
@@ -32,7 +32,7 @@
 
     <p>Please select a neighborhood (try BK09).</p>
 
-    <div class="form">
+    <div id="form" class="form">
       <label for="ntaField">Enter an NTA code: </label>
       <input type="text" id="ntaField" class="ntaField">
       <input type="submit" id="ntaSubmitButton" value="Submit NTA code" class="ntaSubmit">
@@ -49,7 +49,7 @@
     </div>
     <div id=PMmap></div>
     <div id=NOmap></div>
-    <div id=PMbar></div>
+    <div id=PMbar style="width: 100%; height: 300px;"></div>
     <div id=NObar></div>
 
    <script src='./js/AQhub.js'></script>
