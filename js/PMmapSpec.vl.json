@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
+    "width": 400,
+    "height": 400,
+    "autosize": "fit",
+    "config": {
+      "legend": {
+        "orient":"bottom"
+         }
+      },
+    
+    "data": {
+      "url": "./data/NTA-simplified.topojson",
+      "format": {
+        "type": "topojson",
+        "feature": "collection"
+      }
+    },
+    "transform": [{
+      "lookup": "properties.NTACode",
+      "from": {
+        "data": {
+          "url": "./data/NTA_tertilesWpm_no2.csv"
+        },
+        "key": "NTACode",
+        "fields": ["Avg_annavg_PM25"]
+      }
+    }],
+    "mark": "geoshape",
+    "encoding": {
+          "tooltip": {"field": "Avg_annavg_PM25",
+            "type": "quantitative"},
+          "color": {
+            "field": "Avg_annavg_PM25",
+            "type": "quantitative"
+          }
+    }
+  }

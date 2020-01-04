@@ -2,7 +2,7 @@
 // Create and initialize variables
 let nyccasData = [];
 let neighborhoodData =[];
-let selectedNeighborhood = 'BK09';  //document.querySelector("#ntaField")
+let selectedNeighborhood = ['BK09'];  //document.querySelector("#ntaField")
 let selectedName = '';
 let dPM = 0;
 let dNO2 = 0;
@@ -10,6 +10,11 @@ let dBuildingEmissions = 0;
 let dBuildingDensity = 0;
 let dTrafficDensity = 0;
 let dIndustrial = 0;
+let specPMmap = "./js/PMmapSpec.vl.json";
+let specPMbar = "./js/PMbarSpec.vl.json";
+let specNOmap = "./js/NOmapSpec.vl.json";
+let specNObar = "./js/NObarSpec.vl.json";
+const embed_opt = {"mode": "vega-lite"};  
 
 const sbmt = document.querySelector("#ntaSubmitButton"); //creates a constant to hold the submit button query selector
 sbmt.addEventListener('click',dataChange); // listens for button clicks to change neighborhood, changes data
@@ -21,13 +26,26 @@ let nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.jso
 d3.csv("./data/NTA_tertilesWpm_no2.csv").then(function(data) {
     //console.log(data); // [{"Hello": "world"}, …]
     nyccasData=data;
-    neighborhoodData = nyccasData.filter(function (sf){
-            return sf.NTACode === selectedNeighborhood;
+    neighborhoodData = data.filter(function (sf){
+            return sf.NTACode == selectedNeighborhood;
         });
     console.log(nyccasData);
     console.log(selectedNeighborhood);
     console.log(neighborhoodData);
     });     
+
+const el = document.getElementById('PMbar');
+let view = vegaEmbed("#PMbar", specPMbar, embed_opt)
+        .catch(error => showError(el, error))
+            .then((res) =>  res.view
+            .insert("nyccasData", nyccasData)
+            .run());
+
+vegaEmbed('#PMmap', specPMmap).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    result.view.run();
+}).catch(console.error);
 
 // dataChange function updates selected neighborhood, then filter nyccas data and get new neighborhood data, then adds to DOM
 function dataChange() {
@@ -50,13 +68,21 @@ function dataChange() {
     document.querySelector("#TrafficDensity").innerHTML = 'TrafficDensity: ' + tertileTranslate(dTrafficDensity);
     document.querySelector("#Industrial").innerHTML = 'Industrial: ' + tertileTranslate(dIndustrial);
 
+    vegaEmbed("#PMbar", specPMbar, embed_opt)
+        .catch(error => showError(el, error))
+            .then((res) =>  res.view
+            .insert("nyccasData", nyccasData)
+            .run());
+
     console.log('changed');
     console.log(selectedNeighborhood);
     
     }
 
+
+
 function tertileTranslate(tertileVal) {
-    if (tertileVal==="1") {return 'High'}
+    if (tertileVal==="1") {return 'Low'}
     else if (tertileVal==="2") { return 'Medium'}
-    else {return 'Low'};
+    else {return 'High'};
 }
