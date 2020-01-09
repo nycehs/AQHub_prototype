@@ -10,7 +10,7 @@
       },
     
     "data": {
-      "url": "./data/NTA-simplified.topojson",
+      "url": "https://grantpezeshki.github.io/NYC-topojson/NTA.json",
       "format": {
         "type": "topojson",
         "feature": "collection"
