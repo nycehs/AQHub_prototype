@@ -60,7 +60,7 @@ function dataChange() {
     }).catch(console.error);
 
 function tertileTranslate(tertileVal) {
-    if (tertileVal==="1") {return '<span class="badge badge-worse">high</span>'}
-    else if (tertileVal==="2") { return '<span class="badge badge-medium">medium</span>'}
-    else {return '<span class="badge badge-better">low</span>'};
+    if (tertileVal==="1") {return '<span class="badge badge-worse btn-block">high</span>'}
+    else if (tertileVal==="2") { return '<span class="badge badge-medium btn-block">medium</span>'}
+    else {return '<span class="badge badge-better btn-block">low</span>'};
 }
