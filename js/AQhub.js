@@ -39,13 +39,13 @@ function dataChange() {
     dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
     dIndustrial = neighborhoodData[0].tertile_industrial;
-    document.querySelector("#NTA").innerHTML = 'NTA: ' + selectedNeighborhood + ' ' + selectedName;
+    document.querySelector("#NTA").innerHTML = selectedName;
     document.querySelector("#PM").innerHTML = 'PM: ' + dPM;
     document.querySelector("#NO2").innerHTML = 'NO2: ' + dNO2;
-    document.querySelector("#BuildingEmissions").innerHTML = 'BuildingEmissions: ' + tertileTranslate(dBuildingEmissions);
-    document.querySelector("#BuildingDensity").innerHTML = 'BuildingDensity: ' + tertileTranslate(dBuildingDensity);
-    document.querySelector("#TrafficDensity").innerHTML = 'TrafficDensity: ' + tertileTranslate(dTrafficDensity);
-    document.querySelector("#Industrial").innerHTML = 'Industrial: ' + tertileTranslate(dIndustrial);
+    document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
+    document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
+    document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
+    document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
 
     console.log('changed');
     console.log(selectedNeighborhood);
@@ -60,7 +60,7 @@ function dataChange() {
     }).catch(console.error);
 
 function tertileTranslate(tertileVal) {
-    if (tertileVal==="1") {return 'High'}
-    else if (tertileVal==="2") { return 'Medium'}
-    else {return 'Low'};
+    if (tertileVal==="1") {return '<span class="badge badge-worse">high</span>'}
+    else if (tertileVal==="2") { return '<span class="badge badge-medium">medium</span>'}
+    else {return '<span class="badge badge-better">low</span>'};
 }

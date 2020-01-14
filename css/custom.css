@@ -1,0 +1,290 @@
+/* Custom CSS*/
+
+/* This sets our primary background color on most pages*/
+.bg-primary1 {
+	background-color:#E6ECEC
+}
+
+/*background image*/
+.titleslide {
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+}
+
+.card {
+	box-shadow: 2px 2px 2px grey;
+
+}
+
+/* All tile-color classes are for custom page cards*/
+.tile-green {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;	
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #749C8C;
+	color: #FFF;
+	box-shadow: 5px 5px 2px grey;
+}
+
+/* hover for page cards that are single full-div links*/
+.tile-green:hover {
+	background-color: #4e8771;
+	box-shadow: 10px 10px 5px grey}
+
+.tile-red {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;		
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #DC645C;
+	color: #FFF;
+	box-shadow: 5px 5px 2px grey;
+}
+
+.tile-red:hover {
+	background-color: #b84139 ;
+	box-shadow: 10px 10px 5px grey}
+
+.tile-blue {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;		
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #197BBD;
+	color: #FFF;
+	box-shadow: 5px 5px 2px grey;
+}
+
+.tile-blue:hover {
+	background-color: #035d99;
+	box-shadow: 10px 10px 5px grey}
+
+.tile-white {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #ffffff;	
+	color: #000;
+	box-shadow: 2px 2px 1px grey;
+}
+
+.tile-white:hover {
+	background: #f5f5f5;
+	box-shadow: 5px 5px 2px grey}
+
+/* Tile-color-alt removes the hover functionality for cards that are not single links*/
+.tile-white-alt {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #ffffff;	
+	color: #197BBD;
+	box-shadow: 2px 2px 1px grey;
+}
+
+.tile-lightgreen {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;	
+	padding: 20px;
+	margin-bottom: 30px;
+	border-radius: 2px;
+	background: #abc3ba;
+	color: #FFF;
+	box-shadow: 2px 2px 1px grey;
+}
+
+.tile-lightgreen:hover {box-shadow: 5px 5px 2px grey}
+
+.tile-grey {
+	width: 100%;
+	display: inline-block;
+	box-sizing: border-box;	
+	padding: 5px;
+	margin-bottom: 5px;
+	border-radius: 2px;
+	background: #343a40;
+	color: #FFF;
+	box-shadow: 2px 2px 1px grey;
+}
+
+/* This sets card images to a fixed height relative to viewport height*/
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+
+
+
+/*Custom style for scrollbar*/
+
+	/* width */
+	::-webkit-scrollbar {
+	  width: 10px;
+	}
+	
+	/* Track */
+	::-webkit-scrollbar-track {
+	  box-shadow: inset 0 0 5px grey; 
+	  border-radius: 10px;
+	}
+	 
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	  background: grey; 
+	  border-radius: 5px;
+	}
+	
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	  background: #3968cf; 
+	}
+
+
+	/*this hides descriptions on the NR selection page*/
+	.tab-container {
+		display: none;
+	  }
+	  
+	  .tab-container.open {
+		display: block;
+	  }
+
+
+
+	/* custon button classes*/
+
+.btn-worse {
+	color: #fff;
+	background-color: #cc6ce0;
+	border-color: #cc6ce0;
+  }
+  
+  .btn-worse:hover {
+	color: #fff;
+	background-color: #9f31b6
+	;
+	border-color: #9f31b6;
+  }
+  
+  .btn-worse:focus, .btn-worse.focus {
+	box-shadow: 0 0 0 0.2rem rgba(204, 108, 224, 0.5);
+  }
+  
+  .btn-worse.disabled, .btn-worse:disabled {
+	color: #fff;
+	background-color: #9f31b6;
+	border-color: #9f31b6;
+  }
+  
+  .btn-worse:not(:disabled):not(.disabled):active, .btn-worse:not(:disabled):not(.disabled).active,
+  .show > .btn-worse.dropdown-toggle {
+	color: #fff;
+	background-color: #9f31b6;
+	border-color: #9f31b6;
+  }
+  
+  .btn-worse:not(:disabled):not(.disabled):active:focus, .btn-worse:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-worse.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(204, 108, 224, 0.5);
+  }
+
+
+  .btn-better {
+	color: #2b2b2b;
+	background-color: #bae4b3;
+	border-color: #bae4b3;
+  }
+  
+  .btn-better:hover {
+	color: #2b2b2b;
+	background-color:#74c476;
+	border-color: #74c476;
+  }
+  
+  .btn-better:focus, .btn-better.focus {
+	box-shadow: 0 0 0 0.2rem rgba(186, 228, 179, 0.5);
+  }
+  
+  .btn-better.disabled, .btn-better:disabled {
+	color: #2b2b2b;
+	background-color: #f0f9e8;;
+	border-color: #17a2b8;
+  }
+  
+  .btn-better:not(:disabled):not(.disabled):active, .btn-better:not(:disabled):not(.disabled).active,
+  .show > .btn-better.dropdown-toggle {
+	color: #2b2b2b;
+	background-color: #f0f9e8;;
+	border-color: #10707f;
+  }
+  
+  .btn-better:not(:disabled):not(.disabled):active:focus, .btn-better:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-better.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(186, 228, 179, 0.5);
+  }
+
+
+
+  /* adding breadcrumb classes from Bootstrap */
+
+  .breadcrumb{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;padding:.75rem 1rem;margin-bottom:1rem;list-style:none;background-color:#e9ecef;border-radius:.25rem}
+  .breadcrumb-item+.breadcrumb-item{padding-left:.5rem}
+  .breadcrumb-item+.breadcrumb-item::before{display:inline-block;padding-right:.5rem;color:#6c757d;content:"/"}
+  .breadcrumb-item+.breadcrumb-item:hover::before{text-decoration:underline}
+  .breadcrumb-item+.breadcrumb-item:hover::before{text-decoration:none}
+  .breadcrumb-item.active{color:#6c757d}
+
+main {
+	padding-top: 40px;
+}
+
+
+
+/* adding Bootstrap badge CSS */
+.badge{display:inline-block;padding:.25em .4em;font-size:75%;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}@media (prefers-reduced-motion:reduce){.badge{transition:none}}a.badge:focus,a.badge:hover{text-decoration:none}.badge:empty{display:none}.btn .badge{position:relative;top:-1px}.badge-pill{padding-right:.6em;padding-left:.6em;border-radius:10rem}.badge-primary{color:#fff;background-color:#007bff}a.badge-primary:focus,a.badge-primary:hover{color:#fff;background-color:#0062cc}a.badge-primary.focus,a.badge-primary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.5)}.badge-secondary{color:#fff;background-color:#6c757d}a.badge-secondary:focus,a.badge-secondary:hover{color:#fff;background-color:#545b62}a.badge-secondary.focus,a.badge-secondary:focus{outline:0;box-shadow:0 0 0 .2rem rgba(108,117,125,.5)}.badge-success{color:#fff;background-color:#28a745}a.badge-success:focus,a.badge-success:hover{color:#fff;background-color:#1e7e34}a.badge-success.focus,a.badge-success:focus{outline:0;box-shadow:0 0 0 .2rem rgba(40,167,69,.5)}.badge-info{color:#fff;background-color:#17a2b8}a.badge-info:focus,a.badge-info:hover{color:#fff;background-color:#117a8b}a.badge-info.focus,a.badge-info:focus{outline:0;box-shadow:0 0 0 .2rem rgba(23,162,184,.5)}.badge-warning{color:#212529;background-color:#ffc107}a.badge-warning:focus,a.badge-warning:hover{color:#212529;background-color:#d39e00}a.badge-warning.focus,a.badge-warning:focus{outline:0;box-shadow:0 0 0 .2rem rgba(255,193,7,.5)}.badge-danger{color:#fff;background-color:#dc3545}a.badge-danger:focus,a.badge-danger:hover{color:#fff;background-color:#bd2130}a.badge-danger.focus,a.badge-danger:focus{outline:0;box-shadow:0 0 0 .2rem rgba(220,53,69,.5)}.badge-light{color:#212529;background-color:#f8f9fa}a.badge-light:focus,a.badge-light:hover{color:#212529;background-color:#dae0e5}a.badge-light.focus,a.badge-light:focus{outline:0;box-shadow:0 0 0 .2rem rgba(248,249,250,.5)}.badge-dark{color:#fff;background-color:#343a40}a.badge-dark:focus,a.badge-dark:hover{color:#fff;background-color:#1d2124}a.badge-dark.focus,a.badge-dark:focus{outline:0;box-shadow:0 0 0 .2rem rgba(52,58,64,.5)}
+
+.badge-worse {
+	background-color: #6e1e93;
+	color: #fff;}
+
+.badge-medium {
+	background-color: #cc59ca;
+	color: #fff;
+}
+
+.badge-better {
+	background-color: #ffc2ff;
+}
+	
+
+
+
+/*adding grey cards */
+.greyitem {background-color: #E2E2E2;
+padding: 10px;
+height: 200px;}
+
+.greyitem2 {background-color: #E2E2E2;
+	padding: 10px;
+	height: 575px;
+	}
+
+
+
