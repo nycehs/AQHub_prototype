@@ -382,15 +382,9 @@
                                 
                                     <div class="tab-pane fade show active" id="tab-01-a" aria-labelledby="tab-btn-01-a" role="tabpanel">
                                         <div class="greyitem h-100">
-                                            <p> <span style="font-weight:bold;color:#15607a">Your neighborhood</span> has <span class="badge badge-worse">high</span> building emissions.</p> 
                                             <p>Building emissions affects a neighborhood's air quality because like vehicles, buildings burn fuel and emit pollutants: their boilers run on oil, gas, factcheck to produce heat.</p>
                                      
-                                            <div class="border" style="height: 350px;">factor map placeholder and <b>Notes:</b>
-                                            <p>To the JS, I added badge styles. The JS spits out code intended for an HTML ID. I can't reproduce IDs; that's bad HTML - how do we get it destined for a class so that we can put the same thing (e.g., neighborhood name) in multiple locations?</p>
-                                            <p>The goal is to put NTA: BK09 (neighborhood name) - however we style it - in several locations - for example, everywhere you see "<span style="font-weight:bold;color:#15607a">Your neighborhood</span>." Same goes for the low/medium/high badges - they belong in several places.</p>
-                                            <p>Because I can't send JS-returned code to two destinations, the badges <em>within</em> these tabs are not dynamic.</p>
-                                            <p>I removed the div id PMmap, which has code written to populate it.</p>
-                                        </div>
+                                            <div id="BEmap"></div>
                                      
                                      
                                      </div>
@@ -398,27 +392,25 @@
 
                                     <div class="tab-pane fade" id="tab-01-d" aria-labelledby="tab-btn-01-d" role="tabpanel">
                                             <div class="greyitem h-100">
-                                                <p><span style="font-weight:bold;color:#15607a">Your neighborhood</span> has <span class="badge badge-better">low</span> building density.  </p>
                                             
                                              <p>Building density affects a neighborhood's air quality because buildings burn fuel blah blah blah. Note this has a pane for truck traffic.</p>
-                                             <div class="border" style="height: 350px;">factor map placeholder</div>
+                                             <div id="BDmap"></div>
                                 </div>
                                             </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-b" aria-labelledby="tab-btn-01-b" role="tabpanel">
                                         <div class="greyitem h-100">
-                                            <p> <span style="font-weight:bold;color:#15607a">Your neighborhood</span> has <span class="badge badge-medium">medium</span> industrial areas.  </p>
+
                                     <p> Industrial areas affect a neighborhood's air quality because manufacturing may emit pollutants, construction may kick up particulate matter, and increased truck traffic emits pollutants.</p>
 
-                                    <div class="border" style="height: 350px;">factor map placeholder</div>
+                                    <div id="Industrialmap"></div>
                                     </div>
                                     </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-c" aria-labelledby="tab-btn-01-c" role="tabpanel">
                                         <div class="greyitem h-100">
-                                            <p> <span style="font-weight:bold;color:#15607a">Your neighborhood</span> has <span class="badge badge-medium">medium</span> traffic density. </p> 
                                           <p> Traffic density affects a neighborhood's air quality because of tailpipe emissions as well as particulate matter from tires and braking.</p>
-                                          <div class="border" style="height: 350px;">factor map placeholder</div>
+                                          <div id="Trafficmap"></div>
                                 </div>
                                     </div>
         
@@ -431,6 +423,10 @@
                                             
 
                                </div>
+                       </div>
+                       <br>
+                       <div class="card">
+                           
                        </div>
                 </div>
 

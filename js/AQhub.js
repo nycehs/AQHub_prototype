@@ -59,6 +59,38 @@ function dataChange() {
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
+
+        //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+        var spec = "./js/BEmapSpec.vl.json"
+        vegaEmbed('#BEmap', spec).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+          //result.view.insert('selectedNabe',selectedNeighborhood).run()
+        }).catch(console.error);
+
+        //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+        var spec = "./js/BDmapSpec.vl.json"
+        vegaEmbed('#BDmap', spec).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+          //result.view.insert('selectedNabe',selectedNeighborhood).run()
+        }).catch(console.error);
+
+        //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+        var spec = "./js/IndustrialmapSpec.vl.json"
+        vegaEmbed('#Industrialmap', spec).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+          //result.view.insert('selectedNabe',selectedNeighborhood).run()
+        }).catch(console.error);
+
+
+        //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+        var spec = "./js/TrafficmapSpec.vl.json"
+        vegaEmbed('#Trafficmap', spec).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+          //result.view.insert('selectedNabe',selectedNeighborhood).run()
+        }).catch(console.error);
+
+
+
 function tertileTranslate(tertileVal) {
     if (tertileVal==="1") {return '<span class="badge badge-worse btn-block">high</span>'}
     else if (tertileVal==="2") { return '<span class="badge badge-medium btn-block">medium</span>'}

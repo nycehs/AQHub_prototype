@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v3.json",
+    "width": 500,
+    "height": 500,
+    "autosize": "fit",
+    "config": {
+      "legend": {
+        "orient":"bottom"
+         }
+      },
+    
+    "data": {
+      "url": "https://grantpezeshki.github.io/NYC-topojson/NTA.json",
+      "format": {
+        "type": "topojson",
+        "feature": "collection"
+      }
+    },
+    "transform": [{
+      "lookup": "properties.NTACode",
+      "from": {
+        "data": {
+          "url": "./data/NTA_tertilesWpm_no2.csv"
+        },
+        "key": "NTACode",
+        "fields": ["tertile_trafficdensity"]
+      }
+    }],
+    "mark": "geoshape",
+    "encoding": {
+          "tooltip": {"field": "tertile_trafficdensity",
+            "type": "ordinal"},
+          "color": {
+            "field": "tertile_trafficdensity",
+            "type": "ordinal"
+          }
+    }
+  }
