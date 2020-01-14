@@ -40,8 +40,8 @@ function dataChange() {
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
     dIndustrial = neighborhoodData[0].tertile_industrial;
     document.querySelector("#NTA").innerHTML = selectedName;
-    document.querySelector("#PM").innerHTML = 'PM: ' + dPM;
-    document.querySelector("#NO2").innerHTML = 'NO2: ' + dNO2;
+    document.querySelector("#PM").innerHTML = dPM + ' μg/m<sup>3</sup>';
+    document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
     document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
     document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
     document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';

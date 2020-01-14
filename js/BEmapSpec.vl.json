@@ -34,5 +34,6 @@
             "field": "tertile_buildingemissions",
             "type": "ordinal"
           }
+          
     }
   }
