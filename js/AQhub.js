@@ -39,7 +39,9 @@ function dataChange() {
     dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
     dIndustrial = neighborhoodData[0].tertile_industrial;
-    document.querySelector("#NTA").innerHTML = selectedName;
+    document.querySelector("#NTA").innerHTML = 'NTA: ' + selectedName;
+    document.querySelector("#NTA2").innerHTML = selectedName;
+    document.querySelector("#NTA3").innerHTML = selectedName;
     document.querySelector("#PM").innerHTML = dPM + ' μg/m<sup>3</sup>';
     document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
     document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
@@ -90,9 +92,16 @@ function dataChange() {
         }).catch(console.error);
 
 
-
+//Returns block-level badges for the tabs
 function tertileTranslate(tertileVal) {
     if (tertileVal==="3") {return '<span class="badge badge-worse btn-block">high</span>'}
     else if (tertileVal==="2") { return '<span class="badge badge-medium btn-block">medium</span>'}
     else {return '<span class="badge badge-better btn-block">low</span>'};
+}
+
+//Returns in-line badges for text
+function tertileTranslate2(tertileVal) {
+  if (tertileVal==="3") {return '<span class="badge badge-worse">high</span>'}
+  else if (tertileVal==="2") { return '<span class="badge badge-medium">medium</span>'}
+  else {return '<span class="badge badge-better">low</span>'};
 }
