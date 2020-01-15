@@ -39,7 +39,7 @@ function dataChange() {
     dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
     dIndustrial = neighborhoodData[0].tertile_industrial;
-    document.querySelector("#NTA").innerHTML = 'NTA: ' + selectedName;
+    document.querySelector("#NTA").innerHTML = 'Your neighborhood: <h3><span style="font-weight:bold;color:#15607a">' + selectedName + '</span></h3>';
     document.querySelector("#NTA2").innerHTML = selectedName;
     document.querySelector("#NTA3").innerHTML = selectedName;
     document.querySelector("#PM").innerHTML = dPM + ' μg/m<sup>3</sup>';
