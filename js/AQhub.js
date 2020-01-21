@@ -10,11 +10,6 @@ let dBuildingEmissions = 0;
 let dBuildingDensity = 0;
 let dTrafficDensity = 0;
 let dIndustrial = 0;
-let specPMmap = "./js/PMmapSpec.vl.json";
-let specPMbar = "./js/PMbarSpec.vl.json";
-let specNOmap = "./js/NOmapSpec.vl.json";
-let specNObar = "./js/NObarSpec.vl.json";
-const embed_opt = {"mode": "vega-lite"};  
 
 const sbmt = document.querySelector("#ntaSubmitButton"); //creates a constant to hold the submit button query selector
 sbmt.addEventListener('click',dataChange); // listens for button clicks to change neighborhood, changes data
@@ -26,26 +21,13 @@ let nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.jso
 d3.csv("./data/NTA_tertilesWpm_no2.csv").then(function(data) {
     //console.log(data); // [{"Hello": "world"}, …]
     nyccasData=data;
-    neighborhoodData = data.filter(function (sf){
-            return sf.NTACode == selectedNeighborhood;
+    neighborhoodData = nyccasData.filter(function (sf){
+            return sf.NTACode === selectedNeighborhood;
         });
     console.log(nyccasData);
     console.log(selectedNeighborhood);
     console.log(neighborhoodData);
     });     
-
-const el = document.getElementById('PMbar');
-let view = vegaEmbed("#PMbar", specPMbar, embed_opt)
-        .catch(error => showError(el, error))
-            .then((res) =>  res.view
-            .insert("nyccasData", nyccasData)
-            .run());
-
-vegaEmbed('#PMmap', specPMmap).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-    //result.view.insert('selectedNabe',selectedNeighborhood).run()
-    result.view.run();
-}).catch(console.error);
 
 // dataChange function updates selected neighborhood, then filter nyccas data and get new neighborhood data, then adds to DOM
 function dataChange() {
@@ -60,19 +42,15 @@ function dataChange() {
     dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
     dIndustrial = neighborhoodData[0].tertile_industrial;
-    document.querySelector("#NTA").innerHTML = 'NTA: ' + selectedNeighborhood + ' ' + selectedName;
-    document.querySelector("#PM").innerHTML = 'PM: ' + dPM;
-    document.querySelector("#NO2").innerHTML = 'NO2: ' + dNO2;
-    document.querySelector("#BuildingEmissions").innerHTML = 'BuildingEmissions: ' + tertileTranslate(dBuildingEmissions);
-    document.querySelector("#BuildingDensity").innerHTML = 'BuildingDensity: ' + tertileTranslate(dBuildingDensity);
-    document.querySelector("#TrafficDensity").innerHTML = 'TrafficDensity: ' + tertileTranslate(dTrafficDensity);
-    document.querySelector("#Industrial").innerHTML = 'Industrial: ' + tertileTranslate(dIndustrial);
-
-    vegaEmbed("#PMbar", specPMbar, embed_opt)
-        .catch(error => showError(el, error))
-            .then((res) =>  res.view
-            .insert("nyccasData", nyccasData)
-            .run());
+    document.querySelector("#NTA").innerHTML = 'Your neighborhood: <h3><span style="font-weight:bold;color:#15607a">' + selectedName + '</span></h3>';
+    document.querySelector("#NTA2").innerHTML = selectedName;
+    document.querySelector("#NTA3").innerHTML = selectedName;
+    document.querySelector("#PM").innerHTML = dPM + ' μg/m<sup>3</sup>';
+    document.querySelector("#NO2").innerHTML = dNO2 + ' ppb';
+    document.querySelector("#BuildingEmissions").innerHTML = 'Building emissions<br><h5>' + tertileTranslate(dBuildingEmissions) + '</h5>';
+    document.querySelector("#BuildingDensity").innerHTML = 'Building density<br><h5>' + tertileTranslate(dBuildingDensity) + '</h5>';
+    document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
+    document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
 
     console.log('changed');
     console.log(selectedNeighborhood);
@@ -80,9 +58,56 @@ function dataChange() {
     }
 
 
+  //Returns block-level badges for the tabs
+  function tertileTranslate(tertileVal) {
+    if (tertileVal==="3") {return '<span class="badge badge-worse btn-block">high</span>'}
+    else if (tertileVal==="2") { return '<span class="badge badge-medium btn-block">medium</span>'}
+    else {return '<span class="badge badge-better btn-block">low</span>'};
+  }
 
-function tertileTranslate(tertileVal) {
-    if (tertileVal==="1") {return 'Low'}
-    else if (tertileVal==="2") { return 'Medium'}
-    else {return 'High'};
-}
+  //Returns in-line badges for text
+  function tertileTranslate2(tertileVal) {
+  if (tertileVal==="3") {return '<span class="badge badge-worse">high</span>'}
+  else if (tertileVal==="2") { return '<span class="badge badge-medium">medium</span>'}
+  else {return '<span class="badge badge-better">low</span>'};
+  }
+
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/PMmapSpec.vl.json"
+    vegaEmbed('#PMmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+
+
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/BEmapSpec.vl.json"
+    vegaEmbed('#BEmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/BDmapSpec.vl.json"
+    vegaEmbed('#BDmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/IndustrialmapSpec.vl.json"
+    vegaEmbed('#Industrialmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+
+
+    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+    var spec = "./js/TrafficmapSpec.vl.json"
+    vegaEmbed('#Trafficmap', spec).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+
+
+
