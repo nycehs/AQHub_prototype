@@ -313,9 +313,11 @@
             </div>
 
 
-
             <div class="row">
-                <div class="col-6 pt-2 mx-auto pb-4"><h4>Enter your address</h4>   
+            
+                
+                    <div class="col-md-8 col-sm-12 mx-auto">
+                    <h4>Enter your address</h4>   
                     <div id="form" class="form-group">
                             <!--comment out label though we may need label for accessibility
                                 <label for="ntaField">Enter an NTA code: </label> 
@@ -323,9 +325,14 @@
                                 <input type="text" id="ntaField" class="ntaField" style="width: 350px;" placeholder="Enter an NTA code here - try BK09">
                                 <input type="submit" id="ntaSubmitButton" value="Get air quality data" class="ntaSubmit">
                               </div>
+                        
+                   
+                    <span id="NTA"></span>
+                    <br>
+                    <br>
                     
                         
-                            <span id="NTA"></span>
+                            
 
            
               
@@ -334,14 +341,10 @@
                 </div>
             </div>
 
-
-
-    </div>
-    <div class="container-fluid fs-sm">
-
+            
 
             <div class="row">
-                <div class="col-lg-5 my-2 ml-auto">
+                    <div class="col-md-8 col-sm-12 mx-auto">
                         <h5><i class="fa fa-question-circle"></i>&nbsp;What affects the air quality in <span id="NTA2" style="font-weight:bold;color:#15607a"></span></h5>
                         <p>We combine data from our air quality monitoring system, NYCCAS, with other data to understand what makes one neighborhood's air quality better or worse than another's. We found that building emissions, building density, industrial areas, and traffic density are associated with worse air quality.</p>
 
@@ -431,10 +434,8 @@
                                </div>
                        </div>
                        <em>These are Neighborhood Tabulation Area (NTA). <a href="">Read about NTAs and other geographies.</a></em>
-                </div>
-
-                <div class="col-lg-5 my-2 mr-auto">
-                        <h5><i class="fas fa-smog"></i>&nbsp;Air quality in <span id="NTA3" style="font-weight:bold;color:#15607a"></span> </h5>
+                       <hr>
+                       <h5><i class="fas fa-smog"></i>&nbsp;Air quality in <span id="NTA3" style="font-weight:bold;color:#15607a"></span> </h5>
                         <p>We can predict air quality by understanding these factors. So if we don't have an air quality monitor in one neighborhood, but we know its building density, its industrial area, and its traffic, then we can <em>model</em> (estimate or predict) its air quality - based on monitored air quality in similar neighborhoods. </p>
                     <div class="card">
                       
@@ -481,12 +482,10 @@
     
                             </div>
                         </div>
-
-                    
-
                 </div>
 
             </div>
+
 
             <div class="row mt-6 border-top">
                 <div class="col-4 pt-2 mx-auto pb-4">   
