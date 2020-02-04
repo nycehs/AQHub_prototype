@@ -10,6 +10,13 @@ let dBuildingEmissions = 0;
 let dBuildingDensity = 0;
 let dTrafficDensity = 0;
 let dIndustrial = 0;
+let tabShown = 'tab-01-a';
+//let tabSpec = '';
+
+//const trafficMapSpec = "./js/TrafficmapSpec.vl.json";    //These spec definitions were moved to a tab function
+//const industrialMapSpec = "./js/IndustrialmapSpec.vl.json";
+//const BDmapSpec = "./js/BDmapSpec.vl.json";
+//const BEmapSpec = "./js/BEmapSpec.vl.json";
 
 const sbmt = document.querySelector("#ntaSubmitButton"); //creates a constant to hold the submit button query selector
 sbmt.addEventListener('click',dataChange); // listens for button clicks to change neighborhood, changes data
@@ -37,7 +44,9 @@ function dataChange() {
         });
     selectedName = neighborhoodData[0].NTAName;
     dPM = neighborhoodData[0].Avg_annavg_PM25;
+    dPM = numRound(dPM);
     dNO2 = neighborhoodData[0].Avg_annavg_NO2;
+    dNO2 = numRound(dNO2);
     dBuildingEmissions = neighborhoodData[0].tertile_buildingemissions;
     dBuildingDensity = neighborhoodData[0].tertile_buildingdensity;
     dTrafficDensity = neighborhoodData[0].tertile_trafficdensity;
@@ -52,11 +61,31 @@ function dataChange() {
     document.querySelector("#TrafficDensity").innerHTML = 'Traffic density<br><h5>' + tertileTranslate(dTrafficDensity) + '</h5>';
     document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
 
+    loadMap(tabShown);
+
     console.log('changed');
     console.log(selectedNeighborhood);
     
     }
+// rounding function lets us round all numbers the same
+function numRound(x) {
+  return Number.parseFloat(x).toFixed(1);
+}
 
+// jquery commands track tab changes
+$(document).ready(function(){
+  $(document).alert('hi from jquery');
+  $(".nav-pills a").click(function(){
+    $(this).tab('show');
+  });
+  $('.nav-pills a').on('shown.bs.tab', function(event){
+    tabShown = $(event.target).attr('aria-controls');         // active tab
+   // var y = $(event.relatedTarget).text();  // previous tab
+    $(".act span").text(tabShown);
+    $(".prev span").text("did it again");
+    loadMap(tabShown);
+  });
+});
 
   //Returns block-level badges for the tabs
   function tertileTranslate(tertileVal) {
@@ -72,42 +101,82 @@ function dataChange() {
   else {return '<span class="badge badge-better">low</span>'};
   }
 
+  //Returns map insert/update div IDs
+  function mapUpdateID(tabShown) {
+    if (tabShown==="tab-01-a") {
+        return '#BEmap';
+      }
+    else if (tabShown==="tab-01-d") {
+        return '#BDmap';
+      }
+    else if (tabShown==="tab-01-b") {
+        return '#Industrialmap';
+      }
+    else if (tabShown==="tab-01-c") {
+        return '#Trafficmap';
+      }
+    else {console.log('Error: not sure which map to update')};
+    }
+
+  //Returns map specs for proper tab context
+  function mapUpdateSpec(tabShown) {
+    if (tabShown==="tab-01-a") {
+        return "./js/BEmapSpec.vl.json";
+      }
+    else if (tabShown==="tab-01-d") {
+        return "./js/BDmapSpec.vl.json";
+      }
+    else if (tabShown==="tab-01-b") {
+        return "./js/IndustrialmapSpec.vl.json";
+      }
+    else if (tabShown==="tab-01-c") {
+        return "./js/TrafficmapSpec.vl.json";
+      }
+    else {console.log('Error: not sure which map to update')};
+    }
+
+  //create a function to load the Building Density map. Invoked when user clicks the tab or when neighborhood changes.
+  function loadMap(){
+    //console.log(mapUpdateID(tabShown));
+    vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown)).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      //result.view.insert('selectedNabe',selectedNeighborhood).run()
+    }).catch(console.error);
+  }
+
+    /*   //These scripts load the maps initially but once a neighborhood is selected this is not needed
+
     //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
-    var spec = "./js/PMmapSpec.vl.json"
-    vegaEmbed('#PMmap', spec).then(function(result) {
+    var PMmapSpec = "./js/PMmapSpec.vl.json"
+    vegaEmbed('#PMmap', PMmapSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
 
-    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
-    var spec = "./js/BEmapSpec.vl.json"
-    vegaEmbed('#BEmap', spec).then(function(result) {
+    // these load the maps initially. 
+
+    vegaEmbed('#BEmap', BEmapSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
-    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
-    var spec = "./js/BDmapSpec.vl.json"
-    vegaEmbed('#BDmap', spec).then(function(result) {
+    vegaEmbed('#BDmap', BDmapSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
-    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
-    var spec = "./js/IndustrialmapSpec.vl.json"
-    vegaEmbed('#Industrialmap', spec).then(function(result) {
+    vegaEmbed('#Industrialmap', industrialMapSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
 
-
-    //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
-    var spec = "./js/TrafficmapSpec.vl.json"
-    vegaEmbed('#Trafficmap', spec).then(function(result) {
+    vegaEmbed('#Trafficmap', trafficMapSpec).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
+ */
+
 
 
 

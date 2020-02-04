@@ -31,14 +31,7 @@
     
 
 
-    <!--Required charting scripts-->
 
-        <!--    <script src="./js/d3-fetch.v1.min.js"></script> 
-    <script src="./js/d3-dsv.v1.min.js"></script>-->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
 
 </head>
 
@@ -369,9 +362,6 @@
                                         data-toggle="pill" aria-controls="tab-01-c" aria-selected="false" role="tab">
                                         <i class="h4 fas fa-car"></i> <p id="TrafficDensity"></p>
                                     </a>
-        
-
-                                
                                 </div>
                                 
                                 <div class="tab-content" id="tabs-01-content">
@@ -379,45 +369,33 @@
                                     <div class="tab-pane fade show active" id="tab-01-a" aria-labelledby="tab-btn-01-a" role="tabpanel">
                                         <div class="greyitem h-100">
                                             <h4>Building emissions</h4>
-                                            
-                                            
-                                     
                                             <div id="BEmap" style="width: 100%;"></div>
-
                                             <p>Building emissions affect your neighborhood's air quality. Like vehicles, buildings burn fuel: their boilers run on oil or gas to produce heat and hot water. These boilers emit pollutants that affect your neighborhood's air quality.</p>
-                                     
-                                     
-                                     </div>
+                                        </div>
                                     </div>
 
                                     <div class="tab-pane fade" id="tab-01-d" aria-labelledby="tab-btn-01-d" role="tabpanel">
-                                            <div class="greyitem h-100">
-                                                    <h4>Building density</h4>
-                                             
-                                             <div id="BDmap" style="width: 100%; height: 500px;"></div>
-                                             <p>Building density is a key factor for air quality - since buildings emit pollutants, a neighborhood's building density can help predict its air quality. New York City's building density is a function of its population density - with over 26,000 people per square mile, it's is the densest American city.</p>
-                                </div>
-                                            </div>
+                                        <div class="greyitem h-100">
+                                            <h4>Building density</h4>
+                                            <div id="BDmap" style="width: 100%;"></div>
+                                            <p>Building density is a key factor for air quality - since buildings emit pollutants, a neighborhood's building density can help predict its air quality. New York City's building density is a function of its population density - with over 26,000 people per square mile, it's is the densest American city.</p>
+                                        </div>
+                                    </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-b" aria-labelledby="tab-btn-01-b" role="tabpanel">
                                         <div class="greyitem h-100">
                                             <h4>Industrial areas</h4>
-
-                                    
-
-                                    <div id="Industrialmap" style="width: 100%;"></div>
-                                    <p>A neighborhood's industrial area - how much of the neighborhood is industrial - affects its air quality in several ways. Manufacturing may emit pollutants, construction can kick up particulate matter, and increased truck traffic can lead to increased vehicular emissions. </p>
-
-                                    </div>
+                                            <div id="Industrialmap" style="width: 100%;"></div>
+                                            <p>A neighborhood's industrial area - how much of the neighborhood is industrial - affects its air quality in several ways. Manufacturing may emit pollutants, construction can kick up particulate matter, and increased truck traffic can lead to increased vehicular emissions. </p>
+                                        </div>
                                     </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-c" aria-labelledby="tab-btn-01-c" role="tabpanel">
                                         <div class="greyitem h-100">
                                             <h4>Traffic density</h4>
-                                          
-                                          <div id="Trafficmap" style="width: 100%;"></div>
-                                          <p> Traffic density affects a neighborhood's air quality in a few ways. Engines provide to "tailpipe emissions," while dust from wear to tires and from braking contribute additional particulate matter to the air.</p>
-                                </div>
+                                            <div id="Trafficmap" style="width: 100%;"></div>
+                                            <p> Traffic density affects a neighborhood's air quality in a few ways. Engines provide to "tailpipe emissions," while dust from wear to tires and from braking contribute additional particulate matter to the air.</p>
+                                        </div>
                                     </div>
         
 
@@ -816,15 +794,22 @@
 
     </footer>
 
+<!--Required charting scripts-->
+
+     <!-- jQuery (full, compressed version) -->
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+     <!-- Popper.js and Bootstrap JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+
     <!--this is the AQE javascript-->
     <script src='./js/AQhub.js'></script>
-
-    <!-- jQuery (full, compressed version) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-    <!-- Popper.js and Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <!-- Google Translate -->
     <script>
