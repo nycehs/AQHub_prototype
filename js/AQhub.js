@@ -17,9 +17,27 @@ let tabShown = 'tab-01-a';
 //const industrialMapSpec = "./js/IndustrialmapSpec.vl.json";
 //const BDmapSpec = "./js/BDmapSpec.vl.json";
 //const BEmapSpec = "./js/BEmapSpec.vl.json";
+const PMBarSpec="js/PMBarSpec.vl.json";
+const embed_opt = {"mode": "vega-lite"};  
 
-const sbmt = document.querySelector("#ntaSubmitButton"); //creates a constant to hold the submit button query selector
-sbmt.addEventListener('click',dataChange); // listens for button clicks to change neighborhood, changes data
+const mapSearch = document.querySelector("#map-search"); // creates a constant to hold the map search component selector
+mapSearch.addEventListener('keyup',console.log('hi from mapSearch!'));
+
+//Neighborhood Selector Button
+const outBtn = document.querySelector("#outputButton"); //creates a constant to hold the submit button query selector
+outBtn.addEventListener("click",dataChange); // listens for button clicks to change neighborhood, changes data
+
+// Locator Map
+var map = new nyc.ol.FrameworkMap({
+  mapTarget: '#mapLocator',
+  searchTarget: '#map-search',
+  startAt: '125 Worth Street',
+  geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
+  // Developer portal app_key and id don't work, though the nycLib example works
+  //geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=cfed478bf47829a2951bc5a3bbc26422&app_id=2d2a1b38'
+});
+
+
 
 //the d3 code below loads the NTA map data
 let nta_topojson = d3.json("https://grantpezeshki.github.io/NYC-topojson/NTA.json")
@@ -38,11 +56,12 @@ d3.csv("./data/NTA_tertilesWpm_no2.csv").then(function(data) {
 
 // dataChange function updates selected neighborhood, then filter nyccas data and get new neighborhood data, then adds to DOM
 function dataChange() {
-    selectedNeighborhood = document.querySelector("#ntaField").value;
+    console.log('hi from dataChange function');
+    selectedNeighborhood = map.location.data.nta;  //document.querySelector("#ntaField").value;
     neighborhoodData = nyccasData.filter(function (sf){
             return sf.NTACode === selectedNeighborhood;
         });
-    selectedName = neighborhoodData[0].NTAName;
+    selectedName = map.location.data.ntaName;  //neighborhoodData[0].NTAName;
     dPM = neighborhoodData[0].Avg_annavg_PM25;
     dPM = numRound(dPM);
     dNO2 = neighborhoodData[0].Avg_annavg_NO2;
@@ -143,6 +162,20 @@ $(document).ready(function(){
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
     }).catch(console.error);
   }
+
+  // load the maps initially
+  loadMap();
+
+  // load the PM Bar Chart
+  const el = document.getElementById('PMbar');
+  let view = vegaEmbed("#PMbar", PMBarSpec, embed_opt)
+          .catch(error => showError(el, error))
+              .then((res) =>  res.view
+              .insert("nyccasData", nyccasData)
+              .signal("ntaField",selectedNeighborhood)
+              .runAsync());
+
+
 
     /*   //These scripts load the maps initially but once a neighborhood is selected this is not needed
 

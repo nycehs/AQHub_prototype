@@ -17,6 +17,9 @@
     CSS is all hosted by the Core-Repo. Links will need to be updated for each project once merged or deployed.
     This is also the case for main.js further below.
     -->
+        
+    <!-- nyc-lib css (for maps in the core framework)-->
+    <link href="https://maps.nyc.gov/nyc-lib/v1.2.79/css/nyc-basic-lib.css" rel="stylesheet">
 
     <!--Fontawesome Icons-->
     <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/fontawesome/css/all.min.css">
@@ -27,7 +30,7 @@
 
 
     <!--AQE styles-->
-    <link rel="stylesheet" href="/css/aqe.css">
+    <link rel="stylesheet" href="css/aqe.css">
     
 
 
@@ -309,21 +312,27 @@
 
             <div class="row">
                 <div class="col-6 pt-2 mx-auto pb-4"><h4>Enter your address</h4>   
-                    <div id="form" class="form-group">
+
+                        <!-- <label for="addressInput">Enter your address:</label> -->
+
+                    <div class="narrow srch input-group" role="search">
+                        <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
+                    </div>
+
+                        <!-- <input type="text" id="addressInput" class="ntaField"> -->
+                    <div id='mapLocator'></div>
+                    <button class="btn btn-primary btn-lg" id="outputButton">Select This Neighborhood!</button>
+                    <br>                                    
+                    <span id="NTA"></span>
+                
+                    <div id="form">
                             <!--comment out label though we may need label for accessibility
                                 <label for="ntaField">Enter an NTA code: </label> 
+                                Add d-none to the class to hide the entire group
                             -->
-                                <input type="text" id="ntaField" class="ntaField" style="width: 350px;" placeholder="Enter an NTA code here - try BK09">
-                                <input type="submit" id="ntaSubmitButton" value="Get air quality data" class="ntaSubmit">
-                              </div>
-                    
-                        
-                            <span id="NTA"></span>
 
-           
-              
-                    
-                
+                    </div>
+
                 </div>
             </div>
 
@@ -429,7 +438,7 @@
                                 </div>
                                 <hr>
                                
-                                <div class="border" style="height: 200px;">chart placeholder</div>
+                                <div class="border" style="height: 150px;" id="PMbar">chart placeholder</div>
                                         
                                 
 
@@ -452,7 +461,7 @@
                                     <hr>
 
                                    
-                                            <div class="border" style="height: 200px;">chart placeholder</div>
+                                            <div class="border" style="height: 150px;" id="NO2bar">chart placeholder</div>
 
                                             
                                    
@@ -808,10 +817,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
 
-    <!--this is the AQE javascript-->
-    <script src='./js/AQhub.js'></script>
-
-    <!-- Google Translate -->
+  <!-- Google Translate -->
     <script>
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -825,6 +831,13 @@
     <!-- NYC template JS (RTL, search and language toggle, back to top)  -->
     <script src="https://nycehs.github.io/Portal-Core-Repo/js/main.js"></script>
 
+    <!-- NYC Core Framework Map dependencies  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/babel-polyfill.js"></script>
+    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/nyc-ol-lib.js"></script>
+    
   <!--This script makes the modal fed from an HTML file-->
   <script>
     $('.li-modal').on('click', function(e){
@@ -837,6 +850,22 @@
     <script>jQuery('button').click( function(e) {
 		jQuery('.collapse').collapse('hide');
 	});</script>
+
+
+    <!--this is the AQE javascript-->
+    <script src='./js/AQhub.js'></script>
+
+
+
+<!-- // Locator Map  
+<script>
+        var map = new nyc.ol.FrameworkMap({
+        mapTarget: '#mapLocator',
+        startAt: '125 Worth Street',
+        geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
+      });
+      </script>
+-->
 
 </body>
 
