@@ -5,6 +5,13 @@
     "config": {
       "legend": {
         "orient":"bottom"
+         },
+         "range": {
+           "ordinal": [
+            "#ffc2ff",
+            "#cc59ca",
+            "#6e1e93"
+           ]
          }
       },
     
@@ -22,12 +29,12 @@
           "url": "./data/NTA_tertilesWpm_no2.csv"
         },
         "key": "NTACode",
-        "fields": ["tertile_trafficdensity"]
+        "fields": ["tertile_trafficdensity","NTAName"]
       }
     }],
     "mark": "geoshape",
     "encoding": {
-          "tooltip": {"field": "tertile_trafficdensity",
+          "tooltip": {"field": "NTAName",
             "type": "ordinal"},
           "color": {
             "field": "tertile_trafficdensity",
