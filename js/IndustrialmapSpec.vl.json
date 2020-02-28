@@ -38,7 +38,7 @@
             "type": "ordinal"},
           "color": {
             "field": "tertile_industrial",
-            "type": "ordinal"
+            "type": "ordinal","legend":null
           }
     }
   }

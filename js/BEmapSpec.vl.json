@@ -38,7 +38,7 @@
             "type": "ordinal"},
           "color": {
             "field": "tertile_buildingemissions",
-            "type": "ordinal"
+            "type": "ordinal","legend":null
           }
 
           

@@ -38,7 +38,7 @@
             "type": "ordinal"},
           "color": {
             "field": "tertile_buildingdensity",
-            "type": "ordinal"
+            "type": "ordinal","legend":null
           }
     }
   }
