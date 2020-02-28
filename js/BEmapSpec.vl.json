@@ -4,7 +4,7 @@
   "height": "container",
     "config": {
       "legend": {
-        "orient":"bottom"
+        "orient":"none"
          }
       },
     
@@ -33,6 +33,7 @@
             "field": "tertile_buildingemissions",
             "type": "ordinal"
           }
+
           
     }
   }
