@@ -1,4 +1,4 @@
-{"$schema": "https://vega.github.io/schema/vega/v3.0.json",
+{"$schema": "https://vega.github.io/schema/vega/v5.0.json",
       "description": "A simple bar chart with embedded data.",
       "title": "Don't Look Like a Vega Chart But I Am",
       "autosize": "pad",
@@ -15,14 +15,18 @@
         },
         {
           "name": "textlabel",
-          "value": "Click on one of messages above.",
+          "value": "Click on one of the buttons above.",
           "on": [
             {
-              "events": ".label:click",
-              "update": "event.currentTarget.innerText",
+              "events": ".btn:click",
+              "update": "event.currentTarget.value",
               "force":  true
             }
           ]
+        },
+        {
+          "name": "ntaCode",
+          "value": "BK17"
         },
         {
           "name": "xmove",
@@ -59,11 +63,23 @@
         	}
         },
         {
+            "type": "text",
+            "encode": {
+              "enter": {
+                "x": {"value": 0},
+                "y": {"value": 20}    
+              },
+              "update": {
+                  "text": {"signal": "ntaCode"}
+                  }
+              }
+          },
+        {
           "type": "text",
           "encode": {
             "enter": {
               "x": {"value": 0},
-              "y": {"value": 20}
+              "y": {"value": 40}
             },
             "update": {
               "text": {"signal": "xmove"}
@@ -75,7 +91,7 @@
           "encode": {
             "enter": {
               "x": {"value": 0},
-              "y": {"value": 40}
+              "y": {"value": 60}
             },
             "update": {
               "text": {"signal": "clock"}
