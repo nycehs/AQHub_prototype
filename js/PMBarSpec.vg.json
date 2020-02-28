@@ -1,0 +1,165 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "A simple bar chart with named data.",
+    "autosize": {"type": "fit-x", "contains": "padding"},
+    "background": "white",
+    "padding": 5,
+    "height": 150,
+    "style": "cell",
+    "data": [
+      {"name": "ntaField_store"},
+      {"name": "nyccasData"},
+      {
+        "name": "data_0",
+        "source": "nyccasData",
+        "transform": [
+          {
+            "type": "filter",
+            "expr": "isValid(datum[\"Avg_annavg_PM25\"]) && isFinite(+datum[\"Avg_annavg_PM25\"])"
+          }
+        ]
+      }
+    ],
+    "signals": [
+      {
+        "name": "width",
+        "init": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+        "on": [
+          {
+            "update": "isFinite(containerSize()[0]) ? containerSize()[0] : 200",
+            "events": "window:resize"
+          }
+        ]
+      },
+      {
+        "name": "unit",
+        "value": {},
+        "on": [
+          {"events": "mousemove", "update": "isTuple(group()) ? group() : unit"}
+        ]
+      },
+      {
+        "name": "selectNTA",
+        "value": "BK09",
+        "on": [
+          {
+            "events": ".btn:click",
+            "update": "event.currentTarget.value",
+            "force":  true
+          }
+        ]
+      },
+      {
+        "name": "ntaField",
+        "update": "vlSelectionResolve(\"ntaField_store\", \"union\")"
+      },
+      {
+        "name": "ntaField_tuple",
+        "on": [
+          {
+            "events": [{"source": "scope", "type": "click"}],
+            "update": "datum && item().mark.marktype !== 'group' ? {unit: \"\", fields: ntaField_tuple_fields, values: [(item().isVoronoi ? datum.datum : datum)[\"NTACode\"]]} : null",
+            "force": true
+          },
+          {"events": [{"source": "scope", "type": "dblclick"}], "update": "null"}
+        ]
+      },
+      {
+        "name": "ntaField_tuple_fields",
+        "value": [{"type": "E", "field": "NTACode"}]
+      },
+      {
+        "name": "ntaField_modify",
+        "on": [
+          {
+            "events": {"signal": "ntaField_tuple"},
+            "update": "modify(\"ntaField_store\", ntaField_tuple, true)"
+          }
+        ]
+      }
+    ],
+    "marks": [
+      {
+        "name": "marks",
+        "type": "rect",
+        "style": ["bar"],
+        "interactive": true,
+        "from": {"data": "data_0"},
+        "encode": {
+          "update": {
+            "fill": [{
+                "test": {"signal":"selectNTA"},
+                "value": "orange"
+            },
+              {
+                "test": "(vlSelectionTest(\"ntaField_store\", datum))",
+                "value": "orange"
+              },
+              {"value": "grey"}
+            ],
+            "tooltip": {
+              "signal": "{\"Avg_annavg_PM25\": format(datum[\"Avg_annavg_PM25\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"
+            },
+            "x": {"scale": "x", "field": "NTACode"},
+            "width": {"scale": "x", "band": true},
+            "y": {"scale": "y", "field": "Avg_annavg_PM25"},
+            "y2": {"scale": "y", "value": 0}
+          }
+        }
+      }
+    ],
+    "scales": [
+      {
+        "name": "x",
+        "type": "band",
+        "domain": {
+          "data": "nyccasData",
+          "field": "NTACode",
+          "sort": {"op": "mean", "field": "Avg_annavg_PM25"}
+        },
+        "range": [0, {"signal": "width"}],
+        "paddingInner": 0,
+        "paddingOuter": 0
+      },
+      {
+        "name": "y",
+        "type": "linear",
+        "domain": {"data": "data_0", "field": "Avg_annavg_PM25"},
+        "range": [{"signal": "height"}, 0],
+        "nice": true,
+        "zero": true
+      }
+    ],
+    "axes": [
+      {
+        "scale": "y",
+        "orient": "left",
+        "gridScale": "x",
+        "grid": true,
+        "tickCount": {"signal": "ceil(height/40)"},
+        "domain": false,
+        "labels": false,
+        "maxExtent": 0,
+        "minExtent": 0,
+        "ticks": false,
+        "zindex": 0
+      },
+      {
+        "scale": "y",
+        "orient": "left",
+        "grid": false,
+        "title": "PM 2.5",
+        "labelOverlap": true,
+        "tickCount": {"signal": "ceil(height/40)"},
+        "zindex": 0
+      },
+      {
+        "scale": "x",
+        "orient": "bottom",
+        "grid": false,
+        "title": "Neighborhoods",
+        "labelOverlap": false,
+        "zindex": 0
+      }
+    ]
+  }
