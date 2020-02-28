@@ -6,13 +6,18 @@
       "legend": {
         "orient":"none"
          },
-         "range": {
-           "ordinal": [
+      "range": {
+        "ordinal": [
             "#ffc2ff",
             "#cc59ca",
             "#6e1e93"
            ]
-         }
+         },
+      "style": {
+        "cell": {
+          "stroke": "transparent"
+        }
+      }
       },
     
     "data": {

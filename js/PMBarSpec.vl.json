@@ -1,7 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "description": "A simple bar chart with named data.",
-  "config": {"scale": {"barBandPaddingInner": 0}},
+  "config": {"scale": {"barBandPaddingInner": 0},
+            "style": {"cell": {"stroke": "transparent"}}  
+}, 
+            
   "width": "container",
   "height": 150,
   "selection": {

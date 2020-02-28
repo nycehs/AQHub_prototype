@@ -12,8 +12,13 @@
             "#cc59ca",
             "#6e1e93"
            ]
+         },
+         "style": {
+           "cell": {
+             "stroke": "transparent"
+           }
          }
-      },
+         },
     
     "data": {
       "url": "https://grantpezeshki.github.io/NYC-topojson/NTA.json",
