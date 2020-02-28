@@ -25,3 +25,21 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+
+.legendlow {
+  background-color:#ffc2ff; 
+  height: 100%; 
+  width: 25px;
+}
+
+.legendmedium {
+  background-color:#cc59ca;
+   height: 100%; 
+   width: 25px;
+}
+
+.legendhigh {
+  background-color:#6e1e93; 
+  height: 100%; 
+  width: 25px;
+}
