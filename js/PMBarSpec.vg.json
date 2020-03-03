@@ -40,10 +40,10 @@
       },
       {
         "name": "selectNTA",
-        "value": "BK09",
+        "value": "",
         "on": [
           {
-            "events": ".btn:click",
+            "events": ".btn:click",  
             "update": "event.currentTarget.value",
             "force":  true
           }
@@ -88,14 +88,10 @@
         "encode": {
           "update": {
             "fill": [{
-                "test": {"signal":"selectNTA"},
+                "test": "datum.NTACode==selectNTA",
                 "value": "orange"
             },
-              {
-                "test": "(vlSelectionTest(\"ntaField_store\", datum))",
-                "value": "orange"
-              },
-              {"value": "grey"}
+                {"value": "grey"}
             ],
             "tooltip": {
               "signal": "{\"Avg_annavg_PM25\": format(datum[\"Avg_annavg_PM25\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"

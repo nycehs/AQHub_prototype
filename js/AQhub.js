@@ -18,6 +18,7 @@ let tabShown = 'tab-01-a';
 //const BDmapSpec = "./js/BDmapSpec.vl.json";
 //const BEmapSpec = "./js/BEmapSpec.vl.json";
 const PMBarSpec="js/PMBarSpec.vl.json";
+const PMBarVGSpec="js/PMBarSpec.vg.json";
 const embed_opt = {"mode": "vega-lite"};  
 
 const mapSearch = document.querySelector("#map-search"); // creates a constant to hold the map search component selector
@@ -81,6 +82,7 @@ function dataChange() {
     document.querySelector("#Industrial").innerHTML = 'Industrial area<br><h5>' + tertileTranslate(dIndustrial) + '</h5>';
 
     loadMap(tabShown);
+    loadPMBar();
 
     console.log('changed');
     console.log(selectedNeighborhood);
@@ -168,12 +170,23 @@ $(document).ready(function(){
 
   // load the PM Bar Chart
   const el = document.getElementById('PMbar');
-  let view = vegaEmbed("#PMbar", PMBarSpec, embed_opt)
+  let view = vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
           .catch(error => showError(el, error))
               .then((res) =>  res.view
               .insert("nyccasData", nyccasData)
               .signal("ntaField",selectedNeighborhood)
+              .signal("selectNTA",selectedNeighborhood)
               .runAsync());
+    
+  function loadPMBar(){
+    vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
+          .catch(error => showError(el, error))
+              .then((res) =>  res.view
+              .insert("nyccasData", nyccasData)
+              //.signal("ntaField",selectedNeighborhood)
+              .signal("selectNTA",selectedNeighborhood)
+              .runAsync());
+  }
 
 
 
