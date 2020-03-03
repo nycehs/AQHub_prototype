@@ -217,8 +217,8 @@
                     <br> <br>  
                     <span id="NTA"></span> 
                     <hr>
-                    <p>We combine data from our air quality monitoring system, NYCCAS, with other data to understand what makes one neighborhood's air quality better or worse than another's. We found that building emissions, building density, industrial areas, and traffic density are associated with worse air quality.</p>
-                    <p>We can predict air quality by understanding these factors. So if we don't have an air quality monitor in one neighborhood, but we know its building density, its industrial area, and its traffic, then we can <em>model</em> (estimate or predict) its air quality - based on monitored air quality in similar neighborhoods. </p>
+                    <p>We combine data from our air quality monitoring network, NYCCAS, with other data to understand what makes one neighborhood's air quality different from another's. We found that building emissions, building density, industrial areas, and traffic density are associated with changes in air quality.</p>
+                    <p>We can predict air quality by understanding the neighborhood's characteristics. So, if we don't have an air quality monitor in one neighborhood, but we know its building density, its industrial area, and its traffic, then we can <em>model</em> (estimate or predict) its air quality - based on monitored air quality in similar neighborhoods. </p>
 
 
                 </div>
@@ -266,34 +266,35 @@
                                     <div class="tab-pane fade show active" id="tab-01-a" aria-labelledby="tab-btn-01-a" role="tabpanel">
                                         <div class="greyitem h-100">
                                             <h4>Building emissions</h4>
-                                            <div id="BEmap" style="width: 100%;"></div>
                                             <!--The legend starts here-->
-                                            <div class="maplegend">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-1">
-                                                                <div class="legendlow"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                <span class="align-top">Low</span>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                <div class="legendmedium"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                Medium
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                    <div class="legendhigh"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                    High
-                                                        </div>
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
                                                     </div>
-                            
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
                                                 </div>
-                                            <!--the legend ends here-->
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="BEmap" style="width: 100%;"></div>
+
                                             <p>Building emissions affect your neighborhood's air quality. Like vehicles, buildings burn fuel: their boilers run on oil or gas to produce heat and hot water. These boilers emit pollutants that affect your neighborhood's air quality.</p>
                                         </div>
                                     </div>
@@ -301,105 +302,108 @@
                                     <div class="tab-pane fade" id="tab-01-d" aria-labelledby="tab-btn-01-d" role="tabpanel">
                                         <div class="greyitem h-100">
                                             <h4>Building density</h4>
-                                            <div id="BDmap" style="width: 100%;"></div>
                                             <!--The legend starts here-->
-                                            <div class="maplegend">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-1">
-                                                                <div class="legendlow"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                <span class="align-top">Low</span>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                <div class="legendmedium"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                Medium
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                    <div class="legendhigh"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                    High
-                                                        </div>
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
                                                     </div>
-                            
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
                                                 </div>
-                                            <!--the legend ends here-->
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="BDmap" style="width: 100%;"></div>
+
                                             <p>Building density is a key factor for air quality - since buildings emit pollutants, a neighborhood's building density can help predict its air quality. New York City's building density is a function of its population density - with over 26,000 people per square mile, it's is the densest American city.</p>
                                         </div>
                                     </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-b" aria-labelledby="tab-btn-01-b" role="tabpanel">
                                         <div class="greyitem h-100">
-                                            <h4>Industrial areas</h4>
-                                            <div id="Industrialmap" style="width: 100%;"></div>
+                                            <h4>Industrial Area</h4>
                                             <!--The legend starts here-->
-                                            <div class="maplegend">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-1">
-                                                                <div class="legendlow"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                <span class="align-top">Low</span>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                <div class="legendmedium"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                Medium
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                    <div class="legendhigh"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                    High
-                                                        </div>
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
                                                     </div>
-                            
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
                                                 </div>
-                                            <!--the legend ends here-->
-                                            <p>A neighborhood's industrial area - how much of the neighborhood is industrial - affects its air quality in several ways. Manufacturing may emit pollutants, construction can kick up particulate matter, and increased truck traffic can lead to increased vehicular emissions. </p>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="Industrialmap" style="width: 100%;"></div>
+
+                                            <p>The amount of industrial area in a neighborhood may affect its air quality in several ways. Manufacturing may emit pollutants, construction can kick up particulate matter, and increased truck traffic can lead to increased vehicular emissions. </p>
                                         </div>
                                     </div>
                                 
                                     <div class="tab-pane fade" id="tab-01-c" aria-labelledby="tab-btn-01-c" role="tabpanel">
                                         <div class="greyitem h-100">
-                                            <h4>Traffic density</h4>
-                                            <div id="Trafficmap" style="width: 100%;"></div>
+                                            <h4>Traffic Density</h4>
                                             <!--The legend starts here-->
-                                            <div class="maplegend">
-                                                    <div class="row no-gutters">
-                                                        <div class="col-1">
-                                                                <div class="legendlow"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                <span class="align-top">Low</span>
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                <div class="legendmedium"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                Medium
-                                                        </div>
-
-                                                        <div class="col-1">
-                                                                    <div class="legendhigh"></div>
-                                                        </div>
-                                                        <div class="col-2">
-                                                                    High
-                                                        </div>
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
                                                     </div>
-                            
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
                                                 </div>
-                                            <!--the legend ends here-->
-                                            <p> Traffic density affects a neighborhood's air quality in a few ways. Engines provide to "tailpipe emissions," while dust from wear to tires and from braking contribute additional particulate matter to the air.</p>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="Trafficmap" style="width: 100%;"></div>
+
+                                            <p> Traffic density affects a neighborhood's air quality in a few ways. Combustion engines emit "tailpipe emissions" such as PM2.5, NOx and carbon monoxide (CO), while dust from wear to tires and from braking contribute additional particulate matter to the air.</p>
                                         </div>
                                     </div>
         
@@ -422,7 +426,7 @@
                     <div class="card">
                       
                         <div class="card-body">
-                                <p><b>PM2.5</b> (or fine particles) worsen lung and heart diseases and are linked to cancer and premature death. NYC meets the EPA's annual average standard (measured in micrograms per cubic meter, or μg/m<sup>3</sup>), but short-term  concentrations sometime exceeds this threshold.</p>
+                                <p><b>PM2.5</b> (or fine particles) worsen lung and heart diseases and are linked to cancer and premature death. NYC meets the EPA's annual average standard (measured in micrograms per cubic meter, or μg/m<sup>3</sup>), but short-term concentrations sometimes exceed this threshold.</p>
                                 <hr>
                                 <div class="row">
                                     <div class="col-4">EPA standard:
