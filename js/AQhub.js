@@ -19,6 +19,7 @@ let tabShown = 'tab-01-a';
 //const BEmapSpec = "./js/BEmapSpec.vl.json";
 const PMBarSpec="js/PMBarSpec.vl.json";
 const PMBarVGSpec="js/PMBarSpec.vg.json";
+const NO2BarVGSpec="js/NO2BarSpec.vg.json";
 const embed_opt = {"mode": "vega-lite"};  
 
 const mapSearch = document.querySelector("#map-search"); // creates a constant to hold the map search component selector
@@ -83,6 +84,7 @@ function dataChange() {
 
     loadMap(tabShown);
     loadPMBar();
+    loadNO2Bar();
 
     console.log('changed');
     console.log(selectedNeighborhood);
@@ -170,23 +172,38 @@ $(document).ready(function(){
 
   // load the PM Bar Chart
   const el = document.getElementById('PMbar');
-  let view = vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
+  let pmBarView = vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
           .catch(error => showError(el, error))
               .then((res) =>  res.view
               .insert("nyccasData", nyccasData)
-              .signal("ntaField",selectedNeighborhood)
               .signal("selectNTA",selectedNeighborhood)
               .runAsync());
     
   function loadPMBar(){
-    vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
+     pmBarView = vegaEmbed("#PMbar", PMBarVGSpec)  //, embed_opt)
           .catch(error => showError(el, error))
               .then((res) =>  res.view
               .insert("nyccasData", nyccasData)
-              //.signal("ntaField",selectedNeighborhood)
               .signal("selectNTA",selectedNeighborhood)
               .runAsync());
   }
+    // load the NO2 Bar Chart
+    const ele = document.getElementById('NO2bar');
+    let NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec)  //, embed_opt)
+            .catch(error => showError(ele, error))
+                .then((res) =>  res.view
+                .insert("nyccasData", nyccasData)
+                .signal("selectNTA",selectedNeighborhood)
+                .runAsync());
+      
+    function loadNO2Bar(){
+       NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec)  //, embed_opt)
+            .catch(error => showError(ele, error))
+                .then((res) =>  res.view
+                .insert("nyccasData", nyccasData)
+                .signal("selectNTA",selectedNeighborhood)
+                .runAsync());
+    }
 
 
 

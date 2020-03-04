@@ -14,7 +14,7 @@
         "transform": [
           {
             "type": "filter",
-            "expr": "isValid(datum[\"Avg_annavg_PM25\"]) && isFinite(+datum[\"Avg_annavg_PM25\"])"
+            "expr": "isValid(datum[\"Avg_annavg_NO2\"]) && isFinite(+datum[\"Avg_annavg_NO2\"])"
           }
         ]
       }
@@ -65,11 +65,11 @@
                 {"value": "grey"}
             ],
             "tooltip": {
-              "signal": "{\"Avg_annavg_PM25\": format(datum[\"Avg_annavg_PM25\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"
+              "signal": "{\"Avg_annavg_NO2\": format(datum[\"Avg_annavg_NO2\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"
             },
             "x": {"scale": "x", "field": "NTACode"},
             "width": {"scale": "x", "band": true},
-            "y": {"scale": "y", "field": "Avg_annavg_PM25"},
+            "y": {"scale": "y", "field": "Avg_annavg_NO2"},
             "y2": {"scale": "y", "value": 0}
           }
         }
@@ -82,7 +82,7 @@
         "domain": {
           "data": "nyccasData",
           "field": "NTACode",
-          "sort": {"op": "mean", "field": "Avg_annavg_PM25"}
+          "sort": {"op": "mean", "field": "Avg_annavg_NO2"}
         },
         "range": [0, {"signal": "width"}],
         "paddingInner": 0,
@@ -91,7 +91,7 @@
       {
         "name": "y",
         "type": "linear",
-        "domain": {"data": "data_0", "field": "Avg_annavg_PM25"},
+        "domain": {"data": "data_0", "field": "Avg_annavg_NO2"},
         "range": [{"signal": "height"}, 0],
         "nice": true,
         "zero": true
