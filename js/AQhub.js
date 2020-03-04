@@ -2,7 +2,7 @@
 // Create and initialize variables
 let nyccasData = [];
 let neighborhoodData =[];
-let selectedNeighborhood = ['BK09'];  //document.querySelector("#ntaField")
+let selectedNeighborhood = [''];  //document.querySelector("#ntaField")
 let selectedName = '';
 let dPM = 0;
 let dNO2 = 0;
@@ -144,7 +144,7 @@ $(document).ready(function(){
   //Returns map specs for proper tab context
   function mapUpdateSpec(tabShown) {
     if (tabShown==="tab-01-a") {
-        return "./js/BEmapSpec.vl.json";
+        return "./js/BEmapSpec.vg.json";
       }
     else if (tabShown==="tab-01-d") {
         return "./js/BDmapSpec.vl.json";
@@ -161,9 +161,22 @@ $(document).ready(function(){
   //create a function to load the Building Density map. Invoked when user clicks the tab or when neighborhood changes.
   function loadMap(){
     //console.log(mapUpdateID(tabShown));
-    vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown)).then(function(result) {
+    vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown)
+
+  //  ,{
+  //      patch: (spec) => {
+  //        spec.signals.push({"name": "selectNTA",
+  //          "value":""
+  //        })
+  //        return spec;
+  //      }
+  //    }
+      ).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
+      result.view
+              .signal("selectNTA",selectedNeighborhood)
+              .runAsync();
     }).catch(console.error);
   }
 

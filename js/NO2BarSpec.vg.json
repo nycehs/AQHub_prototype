@@ -39,14 +39,7 @@
       },
       {
         "name": "selectNTA",
-        "value": "",
-        "on": [
-          {
-            "events": ".btn:click",  
-            "update": "event.currentTarget.value",
-            "force":  true
-          }
-        ]
+        "value": ""
       }
     ],
     "marks": [
