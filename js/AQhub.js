@@ -147,13 +147,13 @@ $(document).ready(function(){
         return "./js/BEmapSpec.vg.json";
       }
     else if (tabShown==="tab-01-d") {
-        return "./js/BDmapSpec.vl.json";
+        return "./js/BDmapSpec.vg.json";
       }
     else if (tabShown==="tab-01-b") {
-        return "./js/IndustrialmapSpec.vl.json";
+        return "./js/IndustrialmapSpec.vg.json";
       }
     else if (tabShown==="tab-01-c") {
-        return "./js/TrafficmapSpec.vl.json";
+        return "./js/TrafficmapSpec.vg.json";
       }
     else {console.log('Error: not sure which map to update')};
     }
@@ -161,17 +161,8 @@ $(document).ready(function(){
   //create a function to load the Building Density map. Invoked when user clicks the tab or when neighborhood changes.
   function loadMap(){
     //console.log(mapUpdateID(tabShown));
-    vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown)
-
-  //  ,{
-  //      patch: (spec) => {
-  //        spec.signals.push({"name": "selectNTA",
-  //          "value":""
-  //        })
-  //        return spec;
-  //      }
-  //    }
-      ).then(function(result) {
+    vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown))
+      .then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       //result.view.insert('selectedNabe',selectedNeighborhood).run()
       result.view
