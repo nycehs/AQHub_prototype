@@ -58,7 +58,7 @@
                 {"value": "grey"}
             ],
             "tooltip": {
-              "signal": "{\"Avg_annavg_PM25\": format(datum[\"Avg_annavg_PM25\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"
+              "signal": "{\"PM 2.5\": format(datum[\"Avg_annavg_PM25\"], \".1f\"), \"Neighborhood\": ''+datum[\"NTAName\"]}"
             },
             "x": {"scale": "x", "field": "NTACode"},
             "width": {"scale": "x", "band": true},

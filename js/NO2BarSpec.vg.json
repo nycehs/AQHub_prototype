@@ -58,7 +58,7 @@
                 {"value": "grey"}
             ],
             "tooltip": {
-              "signal": "{\"Avg_annavg_NO2\": format(datum[\"Avg_annavg_NO2\"], \"\"), \"NTAName\": ''+datum[\"NTAName\"]}"
+              "signal": "{\"NO2\": format(datum[\"Avg_annavg_NO2\"], \".1f\"), \"Neighborhood\": ''+datum[\"NTAName\"]}"
             },
             "x": {"scale": "x", "field": "NTACode"},
             "width": {"scale": "x", "band": true},
@@ -108,7 +108,7 @@
         "scale": "y",
         "orient": "left",
         "grid": false,
-        "title": "PM 2.5",
+        "title": "NO2",
         "labelOverlap": true,
         "tickCount": {"signal": "ceil(height/40)"},
         "zindex": 0
