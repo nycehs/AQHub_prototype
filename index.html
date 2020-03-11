@@ -99,63 +99,102 @@
         <!-- #nyc-top-header -->
 
 
+        <div class="wrap-header">
 
+            <div class="container-fluid">
 
+                <div class="row align-items-center">
 
-        <div class="container-fluid collapse d-lg-block px-0 border-lg-top border-lg-bottom" id="nav-primary" style="background-color:white;">
+                    <div class="col-lg py-2">
+                        <div class="d-flex justify-content-lg-start">
+                            <a class="align-self-center" href="#" title="Home">
 
-            <h2 class="sr-only">
-                Primary Navigation
-            </h2>
-    
-            <div class="wide">
-    
-                <nav class="nav nav-pills" role="navigation">
-    
-                     <!-- .nav-item -->
-    
-                    <div class="nav-item">
-    
-                        <a class="nav-link" href="../Index.html" id="nav-item-01" role="button">
-                            <i class="fas fa-home"></i>&nbsp;Portal Home
-                        </a>
+                                <!-- Placeholder logo, replace the following <svg> tag with your own image version -->
+                                    <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/">
+                                        <i class="fas fa-home"></i>&nbsp;EH Data Portal Home 
+                                    </a>
 
-    
+                            </a>
+                        </div>
                     </div>
-                    <!-- .nav-item -->
 
-                    <div class="nav-item">
-    
-                        <a class="nav-link" href="../DataStories.html" id="nav-item-02" role="button">
-                            <i class="fas fa-atlas"></i>&nbsp;Data Stories
-                        </a>
 
-    
-                    </div>
-                    <!-- .nav-item -->
+                    <!-- .col -->
 
-                    <div class="nav-item dropdown">
-    
-                        <a class="nav-link" href="../DataExplorer.html" id="nav-item-03" role="button"><i class="fas fa-chart-line"></i>&nbsp;Data Explorer
-                        </a>    
+                    <div class="col-lg-auto border-top border-lg-0">
+
+                        <div class="d-lg-flex align-items-center">
+
+                            <!-- Mobile Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal justify-content-between my-2 d-lg-none">
+                                <li>
+                                    <button class="no-btn-style" type="button" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+
+                            </ul>
+
+                            <div class="collapse d-lg-block mx-n2 mx-lg-2" id="nav-primary">
+
+                            </div>
+
+                            <!-- Desktop Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal d-none d-lg-flex">
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Language" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <!-- .d-flex -->
+
                     </div>
-                    <!-- .nav-item -->
-    
-                    <div class="nav-item">
-    
-                        <a class="nav-link" href="../NeighborhoodReports.html" id="nav-item-04" role="button">
-                            <i class="fas fa-map-marked-alt"></i>&nbsp;Neighborhood Reports
-                        </a>
-    
-                    </div>
-                    <!-- .nav-item -->
-    
-                </nav>
-    
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
             </div>
-            <!-- .wide -->
-    
+            <!-- .container-fluid -->
+
         </div>
+        <!-- .wrap-header -->
+
+        <div class="container-fluid border-top collapse" id="global-language">
+            <div class="narrow py-2">
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+
+        <div class="container-fluid border-top collapse" id="global-search">
+            <form class="narrow py-2" aria-label="Search" role="search">
+                <div class="input-group">
+                    <label class="sr-only" for="global-search-bar">Search</label>
+                    <input class="form-control form-control-lg" id="global-search-bar" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="button" title="Search">
+                            <span class="sr-only">Search</span>
+                            <span class="fas fa-arrow-right" ></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
 
     </header>
     <!-- #global-header -->
@@ -169,12 +208,10 @@
 
         <div class="container-fluid fs-sm">
             <div class="row">
-                <div class="col-lg-10 mx-auto">
+                <div class="col-lg-11 mx-auto">
                         <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/Index.html">Home
-                                        </a></li>
-                                    <li class="breadcrumb-item"><a href="AQ.html">Outdoor air</a></li>
+                                    <li class="breadcrumb-item"><a href="AQ.html">Air Quality hub</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">AQ Explorer</li>
                                 </ol>
             
@@ -189,11 +226,11 @@
 
 
             <div class="row">
-                <div class="col-lg-5 ml-auto col-sm-12 pt-2 pb-4"><h4>1. Enter your address</h4>   
+                <div class="col-lg-6 ml-auto col-sm-12 pt-2 pb-4"><h4>1. Enter your address</h4>   
 
                         <!-- <label for="addressInput">Enter your address:</label> -->
 
-                    <div class="narrow srch input-group" role="search">
+                    <div class="srch input-group" role="search">
                         <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
                     </div>
 
@@ -231,8 +268,8 @@
 
 
             <div class="row">
-                <div class="col-lg-5 my-2 ml-auto">
-                        <h5><i class="fa fa-question-circle"></i>&nbsp;What affects the air quality in <span id="NTA2" style="font-weight:bold;color:#15607a"></span></h5>
+                <div class="col-lg-6 my-2 ml-auto">
+                        <h5><i class="fa fa-question-circle"></i>&nbsp;What affects the air in <span id="NTA2" style="font-weight:bold;color:#15607a"></span></h5>
                         
 
                         <div class="card mb-2">
@@ -417,8 +454,12 @@
 
                                </div>
                        </div>
-                       <em>These are Neighborhood Tabulation Areas (NTA). <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-nynta.page">Read about NTAs and other geographies.</a></em>
-                </div>
+                       <p><em>These are Neighborhood Tabulation Areas (NTA). <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-nynta.page">Read about NTAs and other geographies.</a></em></p>
+
+                       <p>For more air quality data, see <a href="https://nyc-ehs.net/besp-report/web/nyccas">The NYCCAS Annual Report</a>.   </p>
+                       
+                       
+                    </div>
 
                 <div class="col-lg-5 my-2 mr-auto">
                         <h5><i class="fas fa-smog"></i>&nbsp;Air quality in <span id="NTA3" style="font-weight:bold;color:#15607a"></span> </h5>
@@ -428,7 +469,7 @@
                         <div class="card-body">
                                 <p><b>PM2.5</b> (or fine particles) worsen lung and heart diseases and are linked to cancer and premature death. NYC meets the EPA's annual average standard (measured in micrograms per cubic meter, or μg/m<sup>3</sup>), but short-term concentrations sometimes exceed this threshold.</p>
                                 <hr>
-                                <div class="row">
+                                <div class="row mb-2">
                                     <div class="col-4">EPA standard:
                                         <h4>12 μg/m<sup>3</sup></h4></div>
                                     <div class="col-4">NYC:
@@ -436,7 +477,7 @@
                                     <div class="col-4">Your neighborhood:<h4 id="PM"></h4></div>
 
                                 </div>
-                                <hr>
+                                
                                
                                 <div style="height: 150px;" id="PMbar"></div>
                                         
@@ -450,7 +491,7 @@
                             <div class="card-body">
                                     <p><b>Nitrogen dioxide</b> is linked to asthma hospitalizations and other respiratory conditions. NYC meets the EPA's annual standard (measured in parts per billion, or ppb), but short-term concentrations sometimes exceed this threshold.</p>   
                                     <hr>
-                                    <div class="row">
+                                    <div class="row mb-2">
                                             <div class="col-4">EPA standard:
                                                 <h4>53 ppb</h4></div>
                                             <div class="col-4">NYC:
@@ -458,7 +499,7 @@
                                             <div class="col-4">Your neighborhood:<h4 id="NO2"></h4></div>
         
                                         </div>
-                                    <hr>
+                                    
 
                                    
                                             <div style="height: 150px;" id="NO2bar">chart placeholder</div>
@@ -475,14 +516,7 @@
 
             </div>
 
-            <div class="row mt-6">
-                <div class="col-lg-6 col-sm-12 pt-2 ml-auto pb-4">   
-                 For more air quality data, see <a href="https://nyc-ehs.net/besp-report/web/nyccas">The NYCCAS Annual Report</a>. 
-             
 
-                </div>
-
-            </div>
 
 
 
