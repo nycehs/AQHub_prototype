@@ -12,7 +12,7 @@
       },
       {
         "name": "source_0",
-        "url": "data/NTA2.topojson",
+        "url": "data/NTA2.topo.json",
         "format": {"type": "topojson", "feature": "collection"},
         "transform": [
           {

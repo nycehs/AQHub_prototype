@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Corrects IE Compatibility Mode -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Explore your neighborhood's air quality</title>
+
+    <!--
+    CSS is all hosted by the Core-Repo. Links will need to be updated for each project once merged or deployed.
+    This is also the case for main.js further below.
+    -->
+        
+    <!-- nyc-lib css (for maps in the core framework)-->
+    <link href="https://maps.nyc.gov/nyc-lib/v1.2.79/css/nyc-basic-lib.css" rel="stylesheet">
+
+    <!--Fontawesome Icons-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/fontawesome/css/all.min.css">
+    <!--NYC Core Framework Theme-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/css/theme.css">
+    <!--Custom additions for Portal items-->
+    <link rel="stylesheet" href="https://nycehs.github.io/Portal-Core-Repo/css/custom.css">
+
+
+    <!--AQE styles-->
+    <link rel="stylesheet" href="css/aqe.css">
+    
+
+
+
+
+</head>
+
+<body>
+    
+    <!-- For keyboard users -->
+    <a class="sr-only sr-only-focusable skip-menu" href="#skip-header-target">Skip Header</a>
+
+    <header id="global-header" class="titleslide" role="banner" style="background-image: url(../images/background.png);">
+
+        <div class="bg-black text-white" id="nyc-top-header">
+
+            <div class="container-fluid wide">
+
+                <div class="row py-1 align-items-center justify-content-between">
+
+                    <div class="col-auto">
+                        <p class="d-none d-md-flex fs-md">
+                            <a class="text-reset" href="https://www1.nyc.gov/">
+                                <strong>nyc.gov</strong>
+                            </a>
+                            <span class="mx-1" aria-hidden="true">|</span>
+                            Department of Health
+                        </p>
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-auto">
+
+                        <ul class="extensible-list horizontal fs-md">
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/">
+                                    <strong>
+                                        311
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/search/index.page">
+                                    <strong>
+                                        Search all NYC.gov
+                                    </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www1.nyc.gov/" title="Go to nyc.gov">
+                                    <img class="d-block" src="https://nycehs.github.io/Portal-Core-Repo/images/nyc-bubble-logo.svg" width="45" alt="NYC Logo">
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- #nyc-top-header -->
+
+
+        <div class="wrap-header">
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg py-2">
+                        <div class="d-flex justify-content-lg-start">
+                            <a class="align-self-center" href="#" title="Home">
+
+                                <!-- Placeholder logo, replace the following <svg> tag with your own image version -->
+                                    <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/">
+                                        <i class="fas fa-home"></i>&nbsp;EH Data Portal Home 
+                                    </a>
+
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- .col -->
+
+                    <div class="col-lg-auto border-top border-lg-0">
+
+                        <div class="d-lg-flex align-items-center">
+
+                            <!-- Mobile Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal justify-content-between my-2 d-lg-none">
+                                <li>
+                                    <button class="no-btn-style" type="button" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+
+                            </ul>
+
+                            <div class="collapse d-lg-block mx-n2 mx-lg-2" id="nav-primary">
+
+                            </div>
+
+                            <!-- Desktop Toggle Buttons -->
+
+                            <ul class="extensible-list horizontal d-none d-lg-flex">
+                                <li>
+                                    <button class="no-btn-style" type="button" title="Language" data-toggle="collapse"
+                                        data-target="#global-language" aria-controls="global-language"
+                                        aria-expanded="false">
+                                        <span class="sr-only">Language</span>
+                                        <span class="fas fa-language fa-lg" ></span>
+                                    </button>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                        <!-- .d-flex -->
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container-fluid -->
+
+        </div>
+        <!-- .wrap-header -->
+
+        <div class="container-fluid border-top collapse" id="global-language">
+            <div class="narrow py-2">
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+
+        <div class="container-fluid border-top collapse" id="global-search">
+            <form class="narrow py-2" aria-label="Search" role="search">
+                <div class="input-group">
+                    <label class="sr-only" for="global-search-bar">Search</label>
+                    <input class="form-control form-control-lg" id="global-search-bar" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-lg" type="button" title="Search">
+                            <span class="sr-only">Search</span>
+                            <span class="fas fa-arrow-right" ></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+    </header>
+    <!-- #global-header -->
+
+
+
+    <main id="skip-header-target" role="main" style="background-color:#f8f9fa;">
+
+
+
+
+        <div class="container-fluid fs-sm">
+            <div class="row">
+                <div class="col-lg-11 mx-auto">
+                        <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Air Quality hub</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">AQ Explorer</li>
+                                </ol>
+            
+                            </nav>
+
+                            <h3>Neighborhood air quality explorer</h3>
+
+
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-lg-6 ml-auto col-sm-12 pt-2 pb-4"><h4>1. Enter your address</h4>   
+
+                        <!-- <label for="addressInput">Enter your address:</label> -->
+
+                    <div class="srch input-group" role="search">
+                        <input class="rad-all form-control form-control-lg" placeholder="Search Address" id="map-search">
+                    </div>
+
+                        <!-- <input type="text" id="addressInput" class="ntaField"> -->
+                    <div id='mapLocator'></div>
+                    
+                
+                    <div id="form">
+                            <!--comment out label though we may need label for accessibility
+                                <label for="ntaField">Enter an NTA code: </label> 
+                                Add d-none to the class to hide the entire group
+                            -->
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 mr-auto col-sm-12 pt-2">
+                    <h4>&nbsp;</h4>
+                    <button class="btn btn-primary btn-lg" id="outputButton">2. Get data for this neighborhood</button>  
+                    <br> <br>  
+                    <span id="NTA"></span> 
+                    <hr>
+                    <p>We combine data from our air quality monitoring network, NYCCAS, with other data to understand what makes one neighborhood's air quality different from another's. We found that building emissions, building density, industrial areas, and traffic density are associated with changes in air quality.</p>
+                    <p>We can predict air quality by understanding the neighborhood's characteristics. So, if we don't have an air quality monitor in one neighborhood, but we know its building density, its industrial area, and its traffic, then we can <em>model</em> (estimate or predict) its air quality - based on monitored air quality in similar neighborhoods. </p>
+
+
+                </div>
+            </div>
+
+
+
+    </div>
+    <div class="container-fluid fs-sm">
+
+
+            <div class="row">
+                <div class="col-lg-6 my-2 ml-auto">
+                        <h5><i class="fa fa-question-circle"></i>&nbsp;What affects the air in <span id="NTA2" style="font-weight:bold;color:#15607a"></span></h5>
+                        
+
+                        <div class="card mb-2">
+
+                               <div class="card-body">
+                                <div class="nav nav-pills device-sm" role="tablist">
+
+                                    <a class="nav-item nav-link flex-fill active" id="tab-btn-01-a" href="#tab-01-a"
+                                        data-toggle="pill" aria-controls="tab-01-a" aria-selected="true" role="tab">
+                                        <i class="h4 fas fa-smog"></i><p id="BuildingEmissions"></p>
+                                    </a>
+
+                                    <a class="nav-item nav-link flex-fill" id="tab-btn-01-d" href="#tab-01-d"
+                                    data-toggle="pill" aria-controls="tab-01-d" aria-selected="false" role="tab">
+                                    <i class="h4 fas fa-city"></i><p id="BuildingDensity"></p>
+                                    </a>
+                                
+                                    <a class="nav-item nav-link flex-fill" id="tab-btn-01-b" href="#tab-01-b"
+                                        data-toggle="pill" aria-controls="tab-01-b" aria-selected="false" role="tab">
+                                        <i class="h4 fas fa-industry"></i><p id="Industrial"></p>
+                                    </a>
+                                
+                                    <a class="nav-item nav-link flex-fill" id="tab-btn-01-c" href="#tab-01-c"
+                                        data-toggle="pill" aria-controls="tab-01-c" aria-selected="false" role="tab">
+                                        <i class="h4 fas fa-car"></i> <p id="TrafficDensity"></p>
+                                    </a>
+                                </div>
+                                
+                                <div class="tab-content" id="tabs-01-content">
+                                
+                                    <div class="tab-pane fade show active" id="tab-01-a" aria-labelledby="tab-btn-01-a" role="tabpanel">
+                                        <div class="greyitem h-100">
+                                            <h4>Building emissions</h4>
+                                            <!--The legend starts here-->
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
+                                                </div>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="BEmap" style="width: 100%;"></div>
+
+                                            <p>Building emissions affect your neighborhood's air quality. Like vehicles, buildings burn fuel: their boilers run on oil or gas to produce heat and hot water. These boilers emit pollutants that affect your neighborhood's air quality.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="tab-01-d" aria-labelledby="tab-btn-01-d" role="tabpanel">
+                                        <div class="greyitem h-100">
+                                            <h4>Building density</h4>
+                                            <!--The legend starts here-->
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
+                                                </div>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="BDmap" style="width: 100%;"></div>
+
+                                            <p>Building density is a key factor for air quality - since buildings emit pollutants, a neighborhood's building density can help predict its air quality. New York City's building density is a function of its population density - with over 26,000 people per square mile, it's is the densest American city.</p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="tab-pane fade" id="tab-01-b" aria-labelledby="tab-btn-01-b" role="tabpanel">
+                                        <div class="greyitem h-100">
+                                            <h4>Industrial Area</h4>
+                                            <!--The legend starts here-->
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
+                                                </div>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="Industrialmap" style="width: 100%;"></div>
+
+                                            <p>The amount of industrial area in a neighborhood may affect its air quality in several ways. Manufacturing may emit pollutants, construction can kick up particulate matter, and increased truck traffic can lead to increased vehicular emissions. </p>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="tab-pane fade" id="tab-01-c" aria-labelledby="tab-btn-01-c" role="tabpanel">
+                                        <div class="greyitem h-100">
+                                            <h4>Traffic Density</h4>
+                                            <!--The legend starts here-->
+                                            <div class="maplegend no-gutters">
+                                                <div class="row no-gutters">
+                                                    <div class="col-1">
+                                                            <div class="legendlow"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            <span class="align-top">Low</span>
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                            <div class="legendmedium"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                            Medium
+                                                    </div>
+
+                                                    <div class="col-1">
+                                                                <div class="legendhigh"></div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                                High
+                                                    </div>
+                                                </div>
+                        
+                                            </div>
+                                        <!--the legend ends here-->
+                                            <div id="Trafficmap" style="width: 100%;"></div>
+
+                                            <p> Traffic density affects a neighborhood's air quality in a few ways. Combustion engines emit "tailpipe emissions" such as PM2.5, NOx and carbon monoxide (CO), while dust from wear to tires and from braking contribute additional particulate matter to the air.</p>
+                                        </div>
+                                    </div>
+        
+
+        
+
+        
+        
+                                </div>  
+                                            
+
+                               </div>
+                       </div>
+                       
+                       
+                       
+                    </div>
+
+                <div class="col-lg-5 my-2 mr-auto">
+                        <h5><i class="fas fa-smog"></i>&nbsp;Air quality in <span id="NTA3" style="font-weight:bold;color:#15607a"></span> </h5>
+                        
+                    <div class="card">
+                      
+                        <div class="card-body">
+                                <p><b>PM2.5</b> (or fine particles) worsen lung and heart diseases and are linked to cancer and premature death. NYC meets the EPA's annual average standard (measured in micrograms per cubic meter, or μg/m<sup>3</sup>), but short-term concentrations sometimes exceed this threshold.</p>
+                                <hr>
+                                <div class="row mb-2">
+                                    <div class="col-4">EPA standard:
+                                        <h4>12 μg/m<sup>3</sup></h4></div>
+                                    <div class="col-4">NYC:
+                                        <h4>7.0 μg/m<sup>3</sup></h4></div>
+                                    <div class="col-4">Your neighborhood:<h4 id="PM"></h4></div>
+
+                                </div>
+                                
+                               
+                                <div style="height: 150px;" id="PMbar"></div>
+                                        
+                                
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+
+                            <div class="card-body">
+                                    <p><b>Nitrogen dioxide</b> is linked to asthma hospitalizations and other respiratory conditions. NYC meets the EPA's annual standard (measured in parts per billion, or ppb), but short-term concentrations sometimes exceed this threshold.</p>   
+                                    <hr>
+                                    <div class="row mb-2">
+                                            <div class="col-4">EPA standard:
+                                                <h4>53 ppb</h4></div>
+                                            <div class="col-4">NYC:
+                                                <h4>17 ppb</h4></div>
+                                            <div class="col-4">Your neighborhood:<h4 id="NO2"></h4></div>
+        
+                                        </div>
+                                    
+
+                                   
+                                            <div style="height: 150px;" id="NO2bar">chart placeholder</div>
+
+                                            
+                                   
+    
+                            </div>
+                        </div>
+                        <br>
+                        <p><em>These are Neighborhood Tabulation Areas (NTA). <a href="https://www1.nyc.gov/site/planning/data-maps/open-data/dwn-nynta.page">Read about NTAs and other geographies.</a></em> For more air quality data, see <a href="https://nyc-ehs.net/besp-report/web/nyccas">The NYCCAS Annual Report</a>.   </p>
+                    
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        
+
+
+            
+            
+
+
+
+        </div>
+
+
+
+
+
+<!--this script supports the DE modal-->
+<div id="theModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+
+<!--Building modal-->
+<div class="modal fade" id="buildingModal" tabindex="-1" role="dialog" aria-labelledby="distributionModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="distributionModalTitle">Building density</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+             Description of building density
+             
+             High, medium, low
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+      </div>
+      
+
+<!--Industry modal-->
+<div class="modal fade" id="industrialModal" tabindex="-1" role="dialog" aria-labelledby="distributionModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="distributionModalTitle">Industrial areas</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+             Description of industrial density
+             
+             High, medium, low
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+      </div>
+      
+<!--Traffic modal-->
+<div class="modal fade" id="trafficModal" tabindex="-1" role="dialog" aria-labelledby="distributionModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="distributionModalTitle">Traffic density</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+             Description of traffic density
+             
+             High, medium, low
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+      </div>
+      
+<!--Truck modal-->
+<div class="modal fade" id="truckModal" tabindex="-1" role="dialog" aria-labelledby="distributionModalTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="distributionModalTitle">Truck traffic</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+             Description of trucks
+             
+             high, med, low
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+      <br><br><br>
+        
+    </main>
+
+    <footer class="bg-black" id="global-footer" role="contentinfo">
+
+        <h2 class="sr-only">
+            Page Footer
+        </h2>
+
+        <div class="bg-opacity-black-25 text-white" id="nyc-footer">
+
+            <div class="container py-3 d-none" id="languages">
+
+                <div class="row fs-md">
+
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg mb-2 mb-lg-0">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg">
+                        <ul class="extensible-list">
+                            <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                            <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- #languages -->
+
+            <div class="container py-3" id="languages">
+
+                <ul class="fs-md" role="list">
+                    <li><a class="lang-select text-reset" href="#" data-lang="ar">عربى</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="bn">বাঙালি</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="zh-CN">中文</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="fr">français</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ht">Kreyòl Ayisyen</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ko">한국어</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="pl">Polskie</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ru">русский</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="es">Español</a></li>
+                    <li><a class="lang-select text-reset" href="#" data-lang="ur">اردو</a></li>
+                </ul>
+
+            </div>
+            <!-- #languages -->
+
+            <hr class="opacity-10" aria-hidden="true">
+
+            <div class="container py-3">
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-8 mb-3 mb-lg-0">
+
+                        <nav class="row fs-md" role="navigation">
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/nyc-resources/agencies.page">
+                                            <strong>City Agencies</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a858-nycnotify.nyc.gov/notifynyc/">
+                                            <strong>Notify NYC</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/connect/mobile-applications.page">
+                                            <strong>NYC Mobile Apps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/home/contact-us.page">
+                                            <strong>Contact NYC Government</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="https://a856-citystore.nyc.gov/">
+                                            <strong>CityStore</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://maps.nyc.gov/doitt/nycitymap/">
+                                            <strong>Maps</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                            <div class="col-lg mb-3 mb-lg-0">
+
+                                <ul class="extensible-list">
+                                    <li>
+                                        <a class="text-reset"
+                                            href="https://a127-ess.nyc.gov/psp/prdess/?cmd=login&languageCd=ENG&">
+                                            <strong>City Employees</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset" href="http://www1.nyc.gov/connect/social-media.page">
+                                            <strong>Stay Connected</strong>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-reset"
+                                            href="http://www1.nyc.gov/nyc-resources/resident-toolkit.page">
+                                            <strong>Resident Toolkit</strong>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- .col -->
+
+                        </nav>
+
+                    </div>
+                    <!-- .col -->
+
+                    <div class="col-md-6 col-lg-4">
+
+                        <a class="mb-2" href="https://www1.nyc.gov" title="Go to nyc.gov" target="_blank">
+                            <img class="mb-2" src="https://nycehs.github.io/Portal-Core-Repo/images/nyc-bubble-logo.svg" width="90" alt="NYC Logo">
+                        </a>
+                        <p class="fs-sm">City of New York - 2019 All Rights Reserved. NYC is a trademark and service
+                            mark of the City of New York.</p>
+
+                        <ul class="extensible-list horizontal fs-sm">
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/privacy-policy.page">Privacy
+                                    Policy</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/home/terms-of-use.page">Terms
+                                    of Use</a>
+                            </li>
+                            <li>
+                                <a class="text-reset" href="http://www1.nyc.gov/site/mopd/index.page"
+                                    title="Mayor's Office for People with Disabilities">
+                                    <span class="sr-only">Mayor's Office for People with Disabilities</span>
+                                    <span class="fab fa-lg fa-accessible-icon"></span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!-- .col -->
+
+                </div>
+                <!-- .row -->
+
+            </div>
+            <!-- .container -->
+
+        </div>
+        <!-- #nyc-bottom-footer -->
+
+    </footer>
+
+<!--Required charting scripts-->
+
+     <!-- jQuery (full, compressed version) -->
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+     <!-- Popper.js and Bootstrap JS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+ 
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+
+  <!-- Google Translate -->
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en'
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- NYC template JS (RTL, search and language toggle, back to top)  -->
+    <script src="https://nycehs.github.io/Portal-Core-Repo/js/main.js"></script>
+
+    <!-- NYC Core Framework Map dependencies  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
+    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/babel-polyfill.js"></script>
+    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/nyc-ol-lib.js"></script>
+    
+  <!--This script makes the modal fed from an HTML file-->
+  <script>
+    $('.li-modal').on('click', function(e){
+      e.preventDefault();
+      $('#theModal').modal('show').find('.modal-content').load($(this).attr('href'));
+    });
+  </script>
+
+    <!--Script that makes collapsed button content hide on selection of another button-->
+    <script>jQuery('button').click( function(e) {
+		jQuery('.collapse').collapse('hide');
+	});</script>
+
+
+    <!--this is the AQE javascript-->
+    <script src='./js/AQhub.js'></script>
+
+
+
+<!-- // Locator Map  
+<script>
+        var map = new nyc.ol.FrameworkMap({
+        mapTarget: '#mapLocator',
+        startAt: '125 Worth Street',
+        geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
+      });
+      </script>
+-->
+
+</body>
+
+</html>
