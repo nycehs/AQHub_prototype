@@ -49,7 +49,7 @@ FID,NTACode,BoroCode,BoroName,CountyFIPS,NTACode,NTAName,Avg_annavg_PM25,Avg_ann
 48,BK93,3,Brooklyn,47,BK93,Starrett City,6.965474138,15.82733505,2,2,1,2
 49,BK95,3,Brooklyn,47,BK95,Erasmus,7.398307306,19.96732596,3,3,2,1
 50,BK96,3,Brooklyn,47,BK96,Rugby-Remsen Village,7.779449469,19.6884511,2,2,3,3
-51,BK99,3,Brooklyn,47,BK99,park-cemetery-etc-Brooklyn,6.693005049,12.2694076,1,1,1,2
+51,BK99,3,Brooklyn,47,BK99,Open Space - Brooklyn,6.693005049,12.2694076,1,1,1,2
 52,BX01,2,Bronx,5,BX01,Claremont-Bathgate,8.195789937,21.60143653,3,3,3,3
 53,BX03,2,Bronx,5,BX03,Eastchester-Edenwald-Baychester,7.468834832,18.43537872,2,1,2,2
 54,BX05,2,Bronx,5,BX05,Bedford Park-Fordham North,7.843937589,21.66111421,3,3,2,1
@@ -87,7 +87,7 @@ FID,NTACode,BoroCode,BoroName,CountyFIPS,NTACode,NTAName,Avg_annavg_PM25,Avg_ann
 86,BX63,2,Bronx,5,BX63,West Concourse,8.407562392,22.17064602,3,3,3,3
 87,BX75,2,Bronx,5,BX75,Crotona Park East,8.013254933,21.30374415,2,2,3,3
 88,BX98,2,Bronx,5,BX98,Rikers Island,6.754950647,18.08876011,1,1,1,1
-89,BX99,2,Bronx,5,BX99,park-cemetery-etc-Bronx,7.171511649,14.48802251,1,1,2,1
+89,BX99,2,Bronx,5,BX99,Open Space - Bronx,7.171511649,14.48802251,1,1,2,1
 90,MN01,1,Manhattan,61,MN01,Marble Hill-Inwood,7.445619807,20.10796113,3,2,1,1
 91,MN03,1,Manhattan,61,MN03,Central Harlem North-Polo Grounds,7.724790254,22.3473142,3,3,2,1
 92,MN04,1,Manhattan,61,MN04,Hamilton Heights,7.840745684,22.05441353,3,3,3,1
@@ -116,7 +116,7 @@ FID,NTACode,BoroCode,BoroName,CountyFIPS,NTACode,NTAName,Avg_annavg_PM25,Avg_ann
 115,MN36,1,Manhattan,61,MN36,Washington Heights South,8.1972004,22.95165305,3,3,3,1
 116,MN40,1,Manhattan,61,MN40,Upper East Side-Carnegie Hill,9.024608053,26.66219955,3,3,3,1
 117,MN50,1,Manhattan,61,MN50,Stuyvesant Town-Cooper Village,8.188608725,22.94270968,3,3,3,1
-118,MN99,1,Manhattan,61,MN99,park-cemetery-etc-Manhattan,7.598731285,18.17258258,3,3,2,1
+118,MN99,1,Manhattan,61,MN99,Open Space - Manhattan,7.598731285,18.17258258,3,3,2,1
 119,QN01,4,Queens,81,QN01,South Jamaica,7.161362273,17.97543764,1,1,2,3
 120,QN02,4,Queens,81,QN02,Springfield Gardens North,7.074099734,16.94445939,1,1,2,3
 121,QN03,4,Queens,81,QN03,Springfield Gardens South-Brookville,7.273713227,16.70789646,1,1,3,3
@@ -174,7 +174,7 @@ FID,NTACode,BoroCode,BoroName,CountyFIPS,NTACode,NTAName,Avg_annavg_PM25,Avg_ann
 173,QN72,4,Queens,81,QN72,Steinway,7.459137497,20.05440774,1,1,1,3
 174,QN76,4,Queens,81,QN76,Baisley Park,6.872274464,17.13733595,1,1,2,2
 175,QN98,4,Queens,81,QN98,Airport,6.496782137,16.05314925,1,1,1,2
-176,QN99,4,Queens,81,QN99,park-cemetery-etc-Queens,6.925433465,13.71877209,1,1,2,2
+176,QN99,4,Queens,81,QN99,Open Space - Queens,6.925433465,13.71877209,1,1,2,2
 177,SI01,5,Staten Island,85,SI01,Annadale-Huguenot-Prince's Bay-Eltingville,6.363688338,10.67336619,1,1,1,1
 178,SI05,5,Staten Island,85,SI05,New Springville-Bloomfield-Travis,7.145213458,13.35224123,1,1,1,3
 179,SI07,5,Staten Island,85,SI07,Westerleigh,6.815318433,15.47802279,1,1,2,1
@@ -193,4 +193,4 @@ FID,NTACode,BoroCode,BoroName,CountyFIPS,NTACode,NTAName,Avg_annavg_PM25,Avg_ann
 192,SI45,5,Staten Island,85,SI45,New Dorp-Midland Beach,6.489067219,12.38745449,1,1,1,1
 193,SI48,5,Staten Island,85,SI48,Arden Heights,6.442744647,12.97470069,1,1,1,1
 194,SI54,5,Staten Island,85,SI54,Great Kills,6.434879654,12.61503839,1,1,1,1
-195,SI99,5,Staten Island,85,SI99,park-cemetery-etc-Staten Island,6.310264883,9.211807325,1,1,1,1
+195,SI99,5,Staten Island,85,SI99,Open Space - Staten Island,6.310264883,9.211807325,1,1,1,1

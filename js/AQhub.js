@@ -33,7 +33,7 @@ outBtn.addEventListener("click",dataChange); // listens for button clicks to cha
 var map = new nyc.ol.FrameworkMap({
   mapTarget: '#mapLocator',
   searchTarget: '#map-search',
-  startAt: '125 Worth Street',
+  //startAt: '125 Worth Street',
   geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example'
   // Developer portal app_key and id don't work, though the nycLib example works
   //geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=cfed478bf47829a2951bc5a3bbc26422&app_id=2d2a1b38'
