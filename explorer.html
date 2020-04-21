@@ -848,9 +848,19 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
  
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@4"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@5"></script>
+    <!-- support for IE compatibility, esp. for vega -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.7/polyfill.js"></script>
+    <script src="https://vega.github.io/vega/assets/promise.min.js"></script>
+    <script src="https://vega.github.io/vega/assets/symbol.min.js"></script>
+    <script src="https://vega.github.io/vega/assets/fetch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5/build-es5/vega.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@4/build-es5/vega-lite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6/build-es5/vega-embed.js"></script>
+  <!-- vega dataviz -->
+  <!--  <script src="https://cdn.jsdelivr.net/npm/vega@4.3"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@4"></script>    -->
 
   <!-- Google Translate -->
     <script>
@@ -870,7 +880,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.4/proj4.js"></script>
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.4.0/papaparse.min.js"></script>
-    <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/babel-polyfill.js"></script>
+    <!-- <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/babel-polyfill.js"></script> THIS polyfill is included earlier-->
     <script src="https://maps.nyc.gov/nyc-lib/v1.3.68/js/nyc-ol-lib.js"></script>
     
   <!--This script makes the modal fed from an HTML file-->
@@ -888,7 +898,7 @@
 
 
     <!--this is the AQE javascript-->
-    <script src='./js/AQhub.js'></script>
+    <script src='./js/AQhub_babel.js'></script>
 
 
 
