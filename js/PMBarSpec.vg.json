@@ -7,10 +7,10 @@
     "height": 150,
     "style": "cell",
     "data": [
-      {"name": "nyccasData"},
       {
         "name": "data_0",
-        "source": "nyccasData",
+        "url": "data/NTA_tertilesWpm_no2.csv",
+        "format": {"type": "csv", "delimiter": ","},
         "transform": [
           {
             "type": "filter",
@@ -73,7 +73,7 @@
         "name": "x",
         "type": "band",
         "domain": {
-          "data": "nyccasData",
+          "data": "data_0",
           "field": "NTACode",
           "sort": {"op": "mean", "field": "Avg_annavg_PM25"}
         },

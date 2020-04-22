@@ -22,7 +22,7 @@ var PMBarSpec = "js/PMBarSpec.vl.json";
 var PMBarVGSpec = "js/PMBarSpec.vg.json";
 var NO2BarVGSpec = "js/NO2BarSpec.vg.json";
 var embed_opt = {
-  "mode": "vega-lite"
+  actions:false
 };
 var mapSearch = document.querySelector("#map-search"); // creates a constant to hold the map search component selector
 
@@ -36,8 +36,8 @@ outBtn.addEventListener("click", dataChange); // listens for button clicks to ch
 var map = new nyc.ol.FrameworkMap({
   mapTarget: '#mapLocator',
   searchTarget: '#map-search',
-  //startAt: '125 Worth Street',
-  geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example' // Developer portal app_key and id don't work, though the nycLib example works
+  startAt: '125 Worth Street',
+  geoclientUrl: 'https://maps.nyc.gov/geoclient/v2/search.json?app_key=74DF5DB1D7320A9A2&app_id=nyc-lib-example' // Developer portal app_key and id don't work, though the nycLib example works
   //geoclientUrl: 'https://maps.nyc.gov/geoclient/v1/search.json?app_key=cfed478bf47829a2951bc5a3bbc26422&app_id=2d2a1b38'
 
 }); //the d3 code below loads the NTA map data
@@ -106,6 +106,8 @@ $(document).ready(function () {
     $(".act span").text(tabShown);
     $(".prev span").text("did it again");
     loadMap(tabShown);
+    loadPMBar();
+    loadNO2Bar();
   });
 }); //Returns block-level badges for the tabs
 
@@ -171,7 +173,7 @@ function mapUpdateSpec(tabShown) {
 
 function loadMap() {
   //console.log(mapUpdateID(tabShown));
-  vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown)).then(function (result) {
+  vegaEmbed(mapUpdateID(tabShown), mapUpdateSpec(tabShown), embed_opt).then(function (result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     //result.view.insert('selectedNabe',selectedNeighborhood).run()
     result.view.signal("selectNTA", selectedNeighborhood).runAsync();
@@ -179,41 +181,48 @@ function loadMap() {
 } // load the maps initially
 
 
-loadMap(); // load the PM Bar Chart
+loadMap(); 
 
+// load the PM Bar Chart
 var el = document.getElementById('PMbar');
-var pmBarView = vegaEmbed("#PMbar", PMBarVGSpec) //, embed_opt)
-.catch(function (error) {
-  return showError(el, error);
-}).then(function (res) {
-  return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-});
+var pmBarView = vegaEmbed("#PMbar", PMBarVGSpec, embed_opt)
+//.catch(function (error) {
+//  return showError(el, error);
+//})
+.then(function (res) {
+  return res.view.signal("selectNTA", selectedNeighborhood).runAsync();
+}).catch(console.error);
 
 function loadPMBar() {
-  pmBarView = vegaEmbed("#PMbar", PMBarVGSpec) //, embed_opt)
-  .catch(function (error) {
-    return showError(el, error);
-  }).then(function (res) {
-    return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-  });
-} // load the NO2 Bar Chart
+  pmBarView = vegaEmbed("#PMbar", PMBarVGSpec, embed_opt)
+ // .catch(function (error) {
+ //   return showError(el, error);
+ // })
+  .then(function (res) {
+    return res.view.signal("selectNTA", selectedNeighborhood).runAsync();
+  }).catch(console.error);
+} 
+
+// load the NO2 Bar Chart
 
 
 var ele = document.getElementById('NO2bar');
-var NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec) //, embed_opt)
-.catch(function (error) {
-  return showError(ele, error);
-}).then(function (res) {
+var NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec, embed_opt)
+//.catch(function (error) {
+//  return showError(ele, error);
+//})
+.then(function (res) {
   return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-});
+}).catch(console.error);
 
 function loadNO2Bar() {
-  NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec) //, embed_opt)
-  .catch(function (error) {
-    return showError(ele, error);
-  }).then(function (res) {
+  NO2BarView = vegaEmbed("#NO2bar", NO2BarVGSpec, embed_opt)
+//  .catch(function (error) {
+//    return showError(ele, error);
+ // })
+  .then(function (res) {
     return res.view.insert("nyccasData", nyccasData).signal("selectNTA", selectedNeighborhood).runAsync();
-  });
+  }).catch(console.error);
 }
 /*   //These scripts load the maps initially but once a neighborhood is selected this is not needed
  //var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
@@ -240,3 +249,28 @@ vegaEmbed('#PMmap', PMmapSpec).then(function(result) {
   //result.view.insert('selectedNabe',selectedNeighborhood).run()
 }).catch(console.error);
 */
+
+// Source: https://github.com/jserz/js_piece/blob/master/DOM/ParentNode/append()/append().md
+(function (arr) {
+  arr.forEach(function (item) {
+    if (item.hasOwnProperty('append')) {
+      return;
+    }
+    Object.defineProperty(item, 'append', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function append() {
+        var argArr = Array.prototype.slice.call(arguments),
+          docFrag = document.createDocumentFragment();
+        
+        argArr.forEach(function (argItem) {
+          var isNode = argItem instanceof Node;
+          docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+        });
+        
+        this.appendChild(docFrag);
+      }
+    });
+  });
+})([Element.prototype, Document.prototype, DocumentFragment.prototype]);
